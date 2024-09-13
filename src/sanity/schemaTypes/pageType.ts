@@ -1,5 +1,3 @@
-// ./schemas/pageType.ts
-
 import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export const pageType = defineType({
@@ -9,12 +7,24 @@ export const pageType = defineType({
   fields: [
     defineField({ name: 'title', type: 'string' }),
     defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (Rule) => Rule.required(),
+    }),
+
+    defineField({
       name: 'pageBuilder',
       type: 'array',
       title: 'Page builder',
       of: [
-        defineArrayMember({
+        defineField({
           name: 'hero',
+          title: 'Hero Section',
           type: 'hero',
         }),
         defineArrayMember({

@@ -11,3 +11,7 @@ export const PAGE_BUILDER_QUERY = defineQuery(`*[_type == "page"]{
     },
   },
 }`);
+
+export const PAGE_BUILDER_QUERY_2 = defineQuery(`*[_type == "page"][0] {
+  pageBuilder
+}`);

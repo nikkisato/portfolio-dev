@@ -7,6 +7,8 @@ import { pageType } from './pageType';
 import { textWithIllustrationType } from './textWithIllustrationType';
 import { videoType } from './videoType';
 
+import { buttonLink } from './buttonLink';
+
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     pageType,
@@ -16,5 +18,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     imageGalleryType,
     formType,
     videoType,
+    buttonLink,
   ],
 };
