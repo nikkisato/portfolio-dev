@@ -6,8 +6,9 @@ import { imageGalleryType } from './imageGalleryType';
 import { pageType } from './pageType';
 import { textWithIllustrationType } from './textWithIllustrationType';
 import { videoType } from './videoType';
-
+import { headerType } from './headerType';
 import { buttonLink } from './buttonLink';
+import { footerType } from './footerType';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -19,5 +20,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     formType,
     videoType,
     buttonLink,
+    headerType,
+    footerType,
   ],
 };

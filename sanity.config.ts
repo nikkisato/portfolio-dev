@@ -8,7 +8,8 @@ import { visionTool } from '@sanity/vision';
 import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { presentationTool } from 'sanity/presentation';
-import { resolve } from '@/sanity/presentation/resolve';
+import { resolve } from './src/sanity/presentation/resolve';
+import { media } from 'sanity-plugin-media';
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, dataset, projectId } from './src/sanity/env';
@@ -34,5 +35,6 @@ export default defineConfig({
         },
       },
     }),
+    media(),
   ],
 });
