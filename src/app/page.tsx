@@ -1,10 +1,10 @@
 import PageBuilder from '@/components/PageBuilder';
-import Nav from '@/components/Nav';
+import Header from '@/components/Header';
 
 export default async function Page() {
   return (
     <>
-      <Nav />
+      <Header />
       <PageBuilder />
     </>
   );

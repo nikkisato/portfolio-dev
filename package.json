@@ -9,15 +9,18 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@portabletext/editor": "^1.1.1",
     "@sanity/image-url": "^1.0.2",
     "@sanity/vision": "^3.57.1",
     "next": "14.2.8",
     "next-sanity": "^9.4.7",
     "react": "^18",
     "react-dom": "^18",
+    "react-simple-typewriter": "^5.0.1",
     "sanity": "^3.57.1",
     "sanity-plugin-media": "^2.3.2",
-    "styled-components": "^6.1.13"
+    "styled-components": "^6.1.13",
+    "typewriter-effect": "^2.21.0"
   },
   "devDependencies": {
     "@types/node": "^20",

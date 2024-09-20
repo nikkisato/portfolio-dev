@@ -25,3 +25,19 @@ body {
     text-wrap: balance;
   }
 }
+
+section > * {
+  margin-bottom: 2rem;
+}
+
+section > *:last-child {
+  margin-bottom: 0;
+}
+
+.hero-height {
+  height: 80vh;
+}
+
+.textWithImage {
+  height: 80vh;
+}

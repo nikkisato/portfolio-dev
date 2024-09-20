@@ -1,8 +1,9 @@
 import { sanityFetch } from '@/sanity/lib/client';
 import { PAGE_BUILDER_QUERY } from '@/sanity/lib/queries';
 import Hero from './Hero';
-// import CallToAction from './CallToAction';
+import CallToAction from './CallToAction';
 import TextWithIllustration from './TextWithIllustration';
+import Project from './Project';
 
 export default async function PageBuilder() {
   const data = await sanityFetch({ query: PAGE_BUILDER_QUERY });
@@ -10,40 +11,47 @@ export default async function PageBuilder() {
   if (!data) return null;
 
   return (
-    <div>
+    <div className="space-y-10">
       {data &&
-        data.pageBuilder.map((section, index: number) => {
+        data.pageBuilder.map((section) => {
+          const key = section._key || section._id || `section-${Math.random()}`;
+
           switch (section._type) {
             case 'hero':
               return (
                 <Hero
-                  key={section._key || index}
+                  key={key}
                   data={section}
                 />
               );
               break;
-            // case 'callToAction':
-            //   return (
-            //     <CallToAction
-            //       key={section._key || index}
-            //       data={section}
-            //     />
-            //   );
-            //   break;
+            case 'projects':
+              return (
+                <Project
+                  key={key}
+                  data={section}
+                />
+              );
+              break;
+            case 'callToAction':
+              return (
+                <CallToAction
+                  key={key}
+                  data={section}
+                />
+              );
+              break;
             case 'textWithIllustration':
               return (
                 <TextWithIllustration
-                  key={section._key || index}
+                  key={key}
                   data={section}
                 />
               );
               break;
-
             default:
               return null;
           }
-
-          return null;
         })}
     </div>
   );

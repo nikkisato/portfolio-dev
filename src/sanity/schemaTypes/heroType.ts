@@ -24,6 +24,11 @@ export const heroType = defineType({
       description: 'Content for the hero section',
     }),
     defineField({
+      name: 'ShowTypewriter',
+      title: 'Show Typewriter',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'backgroundImage',
       title: 'Background Image',
       type: 'image',

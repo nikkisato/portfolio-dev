@@ -21,10 +21,10 @@ export default function TextWithIllustration({ data }: TextWithIllustrationProps
   const { heading, eyebrow, content, image, image_alignment, text_alignment } = data;
 
   return (
-    <div className="container h-96 mx-auto">
+    <section className="container h-full mx-auto">
       <div className={`flex ${image_alignment === 'left' ? 'flex-row' : 'flex-row-reverse'}`}>
         {/* Image on left or right based on alignment */}
-        <div className="w-1/2">
+        <div className="w-1/2 textWithImage">
           <ImageComponent image={image} />
         </div>
 
@@ -38,6 +38,6 @@ export default function TextWithIllustration({ data }: TextWithIllustrationProps
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
