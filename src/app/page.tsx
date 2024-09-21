@@ -1,11 +1,13 @@
-import { PAGE_BUILDER_QUERY } from '@/sanity/lib/queries';
-import PageBuilder from '@/components/PageBuilder/PageBuilder';
-import { sanityFetch } from '@/sanity/lib/client';
+import PageBuilder from '@/components/PageBuilder';
+import Header from '@/components/Header';
 
-export default async function Home() {
-  const pageBuilder = await sanityFetch({
-    query: PAGE_BUILDER_QUERY,
-  });
-
-  return <PageBuilder pageBuilder={pageBuilder} />;
+export default async function Page() {
+  return (
+    <>
+      <div className="bg-white dark:bg-black">
+        <Header />
+        <PageBuilder />
+      </div>
+    </>
+  );
 }

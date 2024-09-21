@@ -12,12 +12,37 @@ export const textWithIllustrationType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'tagline',
+      name: 'eyebrow',
       type: 'string',
     }),
     defineField({
-      name: 'excerpt',
+      name: 'content',
       type: 'text',
+    }),
+    defineField({
+      name: 'text_alignment',
+      title: 'Text Alignment',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Left', value: 'left' },
+          { title: 'Center', value: 'center' },
+          { title: 'Right', value: 'right' },
+        ],
+        layout: 'dropdown',
+      },
+    }),
+    defineField({
+      name: 'image_alignment',
+      title: 'Image Alignment',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Left Image', value: 'left' },
+          { title: 'Right Image', value: 'right' },
+        ],
+        layout: 'dropdown',
+      },
     }),
     defineField({
       name: 'image',

@@ -6,6 +6,12 @@ import { imageGalleryType } from './imageGalleryType';
 import { pageType } from './pageType';
 import { textWithIllustrationType } from './textWithIllustrationType';
 import { videoType } from './videoType';
+import { headerType } from './headerType';
+import { buttonLink } from './buttonLink';
+import { footerType } from './footerType';
+import { projectsType } from './projectsType';
+import { projectItemType } from './projectItemType';
+import { blockContent } from './blockContent';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -16,5 +22,11 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     imageGalleryType,
     formType,
     videoType,
+    buttonLink,
+    headerType,
+    footerType,
+    projectsType,
+    projectItemType,
+    blockContent,
   ],
 };
