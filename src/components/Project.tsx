@@ -10,8 +10,19 @@ interface ProjectProps {
 
 interface ProjectDataProp {
   heading: string;
-  description: Array<string>;
-  buttons: Array<string>;
+  description: {
+    _key: string;
+    style: string;
+    listItem?: string | undefined;
+    children: { text: string; marks?: string[] | undefined }[];
+  }[];
+  buttons: Array<{
+    text: string;
+    url: string;
+    style: string;
+    isExternal: boolean;
+    _key: string;
+  }>;
 }
 
 export default async function Project({}: ProjectProps) {

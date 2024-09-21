@@ -5,27 +5,19 @@ import CallToAction from './CallToAction';
 import TextWithIllustration from './TextWithIllustration';
 import Project from './Project';
 
-interface sectionProp {
-  _key?: string;
-  _id?: string;
-  _type?: string;
+interface BaseSectionProp {
+  _key: string;
+  _id: string;
+}
 
-  data: {
-    _ref?: string;
-  };
-
-  _ref?: string;
-  alignment?: string;
-  image?: { asset: { _ref: string }; alt: string };
-  image_alignment?: 'left' | 'right';
-  text_alignment?: 'center' | 'left' | 'right';
-
-  eyebrow?: string;
-  heading?: string;
-  content?: string;
-  backgroundImage?: string;
-  ShowTypewriter?: boolean;
-  buttons?: Array<{
+interface HeroSection extends BaseSectionProp {
+  _type: 'hero';
+  eyebrow: string;
+  heading: string;
+  content: string;
+  backgroundImage: string;
+  ShowTypewriter: boolean;
+  buttons: Array<{
     text: string;
     url: string;
     style: string;
@@ -34,6 +26,45 @@ interface sectionProp {
   }>;
 }
 
+interface ProjectSection extends BaseSectionProp {
+  _type: 'projects';
+  _ref: string;
+  heading: string;
+  description: Array<string>;
+  buttons: Array<string>;
+}
+
+interface CallToActionSection extends BaseSectionProp {
+  _type: 'callToAction';
+  heading: string;
+  content: string;
+  buttons: Array<{
+    text: string;
+    url: string;
+    style: string;
+    isExternal: boolean;
+    _key: string;
+  }>;
+}
+
+interface textWithIllustrationSection extends BaseSectionProp {
+  _type: 'textWithIllustration';
+  eyebrow: string;
+  heading: string;
+  content: string;
+  image: { asset: { _ref: string }; alt: string };
+  buttons: Array<{
+    text: string;
+    url: string;
+    style: string;
+    isExternal: boolean;
+    _key: string;
+  }>;
+  image_alignment: 'left' | 'right';
+  text_alignment: 'center' | 'left' | 'right';
+}
+
+type Section = HeroSection | ProjectSection | CallToActionSection | textWithIllustrationSection;
 export default async function PageBuilder() {
   const data = await sanityFetch({ query: PAGE_BUILDER_QUERY });
 
@@ -42,7 +73,7 @@ export default async function PageBuilder() {
   return (
     <div className="space-y-10">
       {data &&
-        data.pageBuilder.map((section: sectionProp) => {
+        data.pageBuilder.map((section: Section) => {
           const key = section._key || section._id || `section-${Math.random()}`;
 
           switch (section._type) {

@@ -5,7 +5,6 @@ interface TextWithIllustrationProps {
     heading: string;
     eyebrow: string;
     content: string;
-    alignment: string;
     image: {
       asset: {
         _ref: string;
