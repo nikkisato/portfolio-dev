@@ -1,5 +1,4 @@
 import { defineField, defineType } from 'sanity';
-import { blockContent } from './blockContent';
 
 export const projectItemType = defineType({
   name: 'project',

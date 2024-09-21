@@ -2,7 +2,15 @@ import { sanityFetch } from '@/sanity/lib/client';
 import { HEADER_QUERY } from '@/sanity/lib/queries';
 // import ImageComponent from './ImageComponent';
 
-export default async function Header({}) {
+interface ButtonProp {
+  text: string;
+  url: string;
+  style: string;
+  isExternal: boolean;
+  _key: string;
+}
+
+export default async function Header() {
   const data = await sanityFetch({ query: HEADER_QUERY });
 
   const { heading, buttons } = data;
@@ -15,7 +23,7 @@ export default async function Header({}) {
       <div className="mx-10">
         <nav>
           <ul className="flex space-x-10">
-            {buttons.map((button) => (
+            {buttons.map((button: ButtonProp) => (
               <li key={button._key}>
                 <a
                   href={button.url}
@@ -43,7 +51,9 @@ export default async function Header({}) {
       </div>
 
       {/* Dark Mode Toggle */}
-      <div className="mx-10">Hello</div>
+      <div className="mx-10">
+        <button className="p-2">Toggle Dark Mode</button>
+      </div>
     </div>
   );
 }

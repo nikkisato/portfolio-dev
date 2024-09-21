@@ -4,8 +4,10 @@ import Header from '@/components/Header';
 export default async function Page() {
   return (
     <>
-      <Header />
-      <PageBuilder />
+      <div className="bg-white dark:bg-black">
+        <Header />
+        <PageBuilder />
+      </div>
     </>
   );
 }

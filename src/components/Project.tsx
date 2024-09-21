@@ -14,7 +14,7 @@ interface ProjectDataProp {
   buttons: Array<string>;
 }
 
-export default async function Project() {
+export default async function Project({}: ProjectProps) {
   const data = await sanityFetch({ query: PROJECT_QUERY });
   if (!data) return null;
 
