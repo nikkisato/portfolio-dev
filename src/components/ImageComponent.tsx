@@ -4,8 +4,9 @@ import Image from 'next/image';
 interface ImageProp {
   image: {
     asset: {
-      _id: string;
-      url: string;
+      _ref: string;
+      _id?: string;
+      url?: string;
       width?: number;
       height?: number;
     };
