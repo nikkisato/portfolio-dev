@@ -1,5 +1,6 @@
 import { sanityFetch } from '@/sanity/lib/client';
 import { HEADER_QUERY } from '@/sanity/lib/queries';
+import DarkModeToggle from './DarkModeToggle';
 // import ImageComponent from './ImageComponent';
 
 interface ButtonProp {
@@ -18,7 +19,7 @@ export default async function Header() {
   if (!data) return null;
 
   return (
-    <div className="flex justify-between h-16 items-center  bg-slate-500 ">
+    <div className="flex justify-between h-16 items-center border-b">
       {/* Navigation */}
       <div className="mx-10">
         <nav>
@@ -27,7 +28,7 @@ export default async function Header() {
               <li key={button._key}>
                 <a
                   href={button.url}
-                  className={`${button.style} p-2`}
+                  className={`${button.style} p-2 border-b-2 border-transparent hover:border-black`}
                   target={button.isExternal ? '_blank' : '_self'}
                   rel={button.isExternal ? 'noopener noreferrer' : undefined}
                 >
@@ -52,7 +53,7 @@ export default async function Header() {
 
       {/* Dark Mode Toggle */}
       <div className="mx-10">
-        <button className="p-2">Toggle Dark Mode</button>
+        <DarkModeToggle />
       </div>
     </div>
   );

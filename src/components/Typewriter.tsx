@@ -1,5 +1,7 @@
 'use client';
 
+import ReduceMotion from '@/components/ReduceMotion';
+
 import { Typewriter } from 'react-simple-typewriter';
 
 interface TypewriterComponentProps {
@@ -7,15 +9,31 @@ interface TypewriterComponentProps {
 }
 
 export default function TypewriterComponent({ words }: TypewriterComponentProps) {
-  return (
-    <Typewriter
-      words={words}
-      loop={25}
-      cursor
-      cursorStyle="|"
-      typeSpeed={70}
-      deleteSpeed={50}
-      delaySpeed={1000}
-    />
-  );
+  const isReduceMotion = ReduceMotion();
+
+  console.log('isReduceMotion', isReduceMotion);
+
+  if (isReduceMotion) {
+    // if User has enabled reduced motion in their OS
+    return (
+      <span>
+        {words[0]}, {words[1]}, and {words[2]}
+      </span>
+    );
+  } else {
+    return (
+      <>
+        <Typewriter
+          words={words}
+          loop={true}
+          cursor
+          cursorStyle="|"
+          typeSpeed={70}
+          deleteSpeed={50}
+          delaySpeed={4000}
+          aria-live="polite"
+        />
+      </>
+    );
+  }
 }
