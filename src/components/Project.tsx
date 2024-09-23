@@ -31,6 +31,7 @@ export default async function Project({}: ProjectProps) {
 
   return (
     <div>
+      <h2>Projects</h2>
       {data.map((item: ProjectDataProp, index: number) => {
         return (
           <ProjectItem

@@ -24,12 +24,12 @@ export default function Hero({ data }: HeroProps) {
 
   return (
     <section className="container mx-auto hero-height">
-      <div className="flex items-center justify-center flex-col h-full">
+      <div className="flex items-center justify-center flex-col h-full space-y-6">
         <p>{eyebrow}</p>
-        <h2>{heading}</h2>
+        <h2 className="text-5xl">{heading}</h2>
         <div>{content}</div>
         {ShowTypewriter === true && (
-          <div>
+          <div className="text-3xl">
             I&apos;m a{' '}
             <TypewriterComponent words={['UI Developer', 'A11y Advocate', 'Photographer']} />
           </div>
@@ -42,7 +42,7 @@ export default function Hero({ data }: HeroProps) {
                 <li key={button._key}>
                   <a
                     href={button.url}
-                    className={`${button.style} p-2`}
+                    className={`${button.style} p-2 border-b-2 border-transparent hover:border-black dark:hover:border-white`}
                     target={button.isExternal ? '_blank' : '_self'}
                     rel={button.isExternal ? 'noopener noreferrer' : undefined}
                   >
