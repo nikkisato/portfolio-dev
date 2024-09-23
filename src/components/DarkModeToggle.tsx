@@ -22,7 +22,10 @@ export default function DarkModeToggle() {
   };
 
   return (
-    <button onClick={toggleDarkMode}>
+    <button
+      onClick={toggleDarkMode}
+      className="p-2 border-b-2 border-transparent hover:border-black dark:hover:border-white"
+    >
       {isDarkMode ? (
         <>
           <LightModeIcon />

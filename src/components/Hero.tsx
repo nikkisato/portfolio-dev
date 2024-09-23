@@ -42,7 +42,7 @@ export default function Hero({ data }: HeroProps) {
                 <li key={button._key}>
                   <a
                     href={button.url}
-                    className={`${button.style} p-2 border-b-2 border-transparent hover:border-black`}
+                    className={`${button.style} p-2 border-b-2 border-transparent hover:border-black dark:hover:border-white`}
                     target={button.isExternal ? '_blank' : '_self'}
                     rel={button.isExternal ? 'noopener noreferrer' : undefined}
                   >
