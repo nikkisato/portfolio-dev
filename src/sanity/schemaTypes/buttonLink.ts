@@ -6,6 +6,22 @@ export const buttonLink = defineType({
   type: 'object',
   fields: [
     defineField({
+      name: 'icon',
+      title: 'Icon',
+      type: 'string',
+      description: 'Select an icon for this feature',
+      options: {
+        list: [
+          { title: 'Facebook', value: 'FacebookIcon' },
+          { title: 'Github', value: 'GitHubIcon' },
+          { title: 'X', value: 'XIcon' },
+          { title: 'Youtube', value: 'YouTubeIcon' },
+          { title: 'Instagram', value: 'InstagramCircle' },
+          { title: 'Email', value: 'EmailIcon' },
+        ],
+      },
+    }),
+    defineField({
       name: 'text',
       title: 'Text',
       type: 'string',

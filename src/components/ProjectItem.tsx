@@ -1,3 +1,5 @@
+import ButtonLink from './ButtonLink';
+
 interface ProjectItemProp {
   data: {
     heading: string;
@@ -80,21 +82,7 @@ export default function ProjectItem({ data }: ProjectItemProp) {
           })}
       </div>
       <div>
-        <ul className="flex">
-          {buttons &&
-            buttons.map((button) => (
-              <li key={button._key}>
-                <a
-                  href={button.url}
-                  className={`${button.style} p-2`}
-                  target={button.isExternal ? '_blank' : '_self'}
-                  rel={button.isExternal ? 'noopener noreferrer' : undefined}
-                >
-                  {button.text}
-                </a>
-              </li>
-            ))}
-        </ul>
+        <ButtonLink buttons={buttons} />
       </div>
     </div>
   );

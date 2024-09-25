@@ -4,6 +4,7 @@ import Hero from './Hero';
 import CallToAction from './CallToAction';
 import TextWithIllustration from './TextWithIllustration';
 import Project from './Project';
+import Feature from './Feature';
 
 interface BaseSectionProp {
   _key: string;
@@ -64,7 +65,26 @@ interface textWithIllustrationSection extends BaseSectionProp {
   text_alignment: 'center' | 'left' | 'right';
 }
 
-type Section = HeroSection | ProjectSection | CallToActionSection | textWithIllustrationSection;
+interface FeatureSection extends BaseSectionProp {
+  _type: 'feature';
+  eyebrow: string;
+  heading: string;
+  content: string;
+  featureItems: Array<{
+    eyebrow: string;
+    icon: string;
+    heading: string;
+    description: string;
+    featureImage: { asset: { _ref: string }; alt: string };
+  }>;
+}
+
+type Section =
+  | HeroSection
+  | ProjectSection
+  | CallToActionSection
+  | textWithIllustrationSection
+  | FeatureSection;
 export default async function PageBuilder() {
   const data = await sanityFetch({ query: PAGE_BUILDER_QUERY });
 
@@ -109,6 +129,13 @@ export default async function PageBuilder() {
                 />
               );
               break;
+            case 'feature':
+              return (
+                <Feature
+                  key={key}
+                  data={section}
+                />
+              );
             default:
               return null;
           }

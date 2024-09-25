@@ -29,28 +29,39 @@ export const pageType = defineType({
         }),
         defineArrayMember({
           name: 'textWithIllustration',
+          title: 'Text with Illustration Section',
           type: 'textWithIllustration',
         }),
         defineArrayMember({
           name: 'gallery',
+          title: 'Gallery Section',
           type: 'gallery',
         }),
         defineArrayMember({
           name: 'form',
+          title: 'Form Section',
           type: 'form',
         }),
         defineArrayMember({
           name: 'video',
+          title: 'Video Section',
           type: 'video',
         }),
         defineArrayMember({
+          name: 'feature',
+          title: 'Feature Section',
+          type: 'featureSection',
+        }),
+        defineArrayMember({
           name: 'callToAction',
-          type: 'callToAction',
+          title: 'Call To Action Section',
+          type: 'reference',
+          to: [{ type: 'callToAction' }],
         }),
         defineArrayMember({
           name: 'projects',
-          type: 'reference',
-          to: [{ type: 'projects' }],
+          title: 'Project Section',
+          type: 'projects',
         }),
       ],
     }),

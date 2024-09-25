@@ -1,6 +1,7 @@
 'use client';
 
 import TypewriterComponent from '@/components/Typewriter';
+import ButtonLink from './ButtonLink';
 
 interface HeroProps {
   data: {
@@ -36,21 +37,7 @@ export default function Hero({ data }: HeroProps) {
         )}
 
         <div>
-          <ul className="flex">
-            {buttons &&
-              buttons.map((button) => (
-                <li key={button._key}>
-                  <a
-                    href={button.url}
-                    className={`${button.style} p-2 border-b-2 border-transparent hover:border-black dark:hover:border-white`}
-                    target={button.isExternal ? '_blank' : '_self'}
-                    rel={button.isExternal ? 'noopener noreferrer' : undefined}
-                  >
-                    {button.text}
-                  </a>
-                </li>
-              ))}
-          </ul>
+          <ButtonLink buttons={buttons} />
         </div>
       </div>
     </section>

@@ -1,6 +1,7 @@
 import { sanityFetch } from '@/sanity/lib/client';
 import { HEADER_QUERY } from '@/sanity/lib/queries';
 import DarkModeToggle from './DarkModeToggle';
+import ButtonLink from './ButtonLink';
 // import ImageComponent from './ImageComponent';
 
 interface ButtonProp {
@@ -23,20 +24,7 @@ export default async function Header() {
       {/* Navigation */}
       <div className="mx-10">
         <nav>
-          <ul className="flex space-x-10">
-            {buttons.map((button: ButtonProp) => (
-              <li key={button._key}>
-                <a
-                  href={button.url}
-                  className={`${button.style} p-2 border-b-2 border-transparent hover:border-black dark:hover:border-white`}
-                  target={button.isExternal ? '_blank' : '_self'}
-                  rel={button.isExternal ? 'noopener noreferrer' : undefined}
-                >
-                  {button.text}
-                </a>
-              </li>
-            ))}
-          </ul>
+          <ButtonLink buttons={buttons} />
         </nav>
       </div>
       {/* Logo */}
