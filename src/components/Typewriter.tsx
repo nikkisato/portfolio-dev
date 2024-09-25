@@ -11,8 +11,6 @@ interface TypewriterComponentProps {
 export default function TypewriterComponent({ words }: TypewriterComponentProps) {
   const isReduceMotion = ReduceMotion();
 
-  console.log('isReduceMotion', isReduceMotion);
-
   if (isReduceMotion) {
     // if User has enabled reduced motion in their OS
     return (

@@ -14,12 +14,10 @@ interface CallToActionProps {
 export default function CallToAction({ data }: CallToActionProps) {
   const { heading, content, buttons } = data;
 
-  console.log(data);
   return (
     <div>
       <h2>{heading}</h2>
       <p>{content}</p>
-   
     </div>
   );
 }

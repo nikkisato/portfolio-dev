@@ -4,14 +4,6 @@ import DarkModeToggle from './DarkModeToggle';
 import ButtonLink from './ButtonLink';
 // import ImageComponent from './ImageComponent';
 
-interface ButtonProp {
-  text: string;
-  url: string;
-  style: string;
-  isExternal: boolean;
-  _key: string;
-}
-
 export default async function Header() {
   const data = await sanityFetch({ query: HEADER_QUERY });
 
@@ -24,7 +16,11 @@ export default async function Header() {
       {/* Navigation */}
       <div className="mx-10">
         <nav>
-          <ButtonLink buttons={buttons} />
+          <ButtonLink
+            buttons={buttons}
+            spacing="horizontal"
+            direction="row"
+          />
         </nav>
       </div>
       {/* Logo */}

@@ -1,18 +1,40 @@
 import { defineField, defineType } from 'sanity';
-import StarIcon from '@mui/icons-material/Star';
-import SyncIcon from '@mui/icons-material/Sync';
-import SortIcon from '@mui/icons-material/Sort';
-import ShareIcon from '@mui/icons-material/Share';
-import SettingsIcon from '@mui/icons-material/Settings';
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import PersonIcon from '@mui/icons-material/Person';
-import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 
 export const featureSection = defineType({
   name: 'featureSection',
   type: 'object',
   title: 'Feature Section',
   fields: [
+    defineField({
+      name: 'footer_type',
+      title: 'Footer Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Simple', value: 'simple' },
+          {
+            title: 'Simple two column with small icons ',
+            value: 'simple_two_columns_with_small_icons',
+          },
+          {
+            title: 'Simple three column with small icons ',
+            value: 'simple_three_columns_with_small_icons',
+          },
+          {
+            title: 'Simple three column with large icons ',
+            value: 'simple_three_columns_with_large_icons',
+          },
+          { title: 'With Product Screenshot on Left', value: 'with_product_screenshot_on_left' },
+          { title: 'With Product Screenshot on Right', value: 'with_product_screenshot_on_right' },
+
+          { title: 'Offset 2x2 Grid', value: 'offset_2x2_grid' },
+          { title: 'Offset with Feature List', value: 'offset_with_feature_list' },
+          { title: 'With Large Screenshot', value: 'with_large_screenshot' },
+          { title: 'Centered 2x2 Grid', value: 'centered_2x2_grid' },
+        ],
+        layout: 'dropdown',
+      },
+    }),
     defineField({
       name: 'eyebrow',
       type: 'string',

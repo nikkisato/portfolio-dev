@@ -18,6 +18,7 @@ export const buttonLink = defineType({
           { title: 'Youtube', value: 'YouTubeIcon' },
           { title: 'Instagram', value: 'InstagramCircle' },
           { title: 'Email', value: 'EmailIcon' },
+          { title: 'Linkedin', value: 'LinkedinIcon' },
         ],
       },
     }),
@@ -64,6 +65,17 @@ export const buttonLink = defineType({
         ],
       },
       description: 'Select the style of the button/link',
+    }),
+    defineField({
+      name: 'ariaLabel',
+      title: 'Aria Label Text',
+      type: 'string',
+      description: 'The text that will be used for Aria Label',
+      validation: (Rule) =>
+        Rule.required()
+          .min(1)
+          .max(100)
+          .error('Button/Link text is required and should be between 1 and 100 characters'),
     }),
   ],
 });

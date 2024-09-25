@@ -37,7 +37,11 @@ export default function Hero({ data }: HeroProps) {
         )}
 
         <div>
-          <ButtonLink buttons={buttons} />
+          <ButtonLink
+            buttons={buttons}
+            spacing="horizontal"
+            direction="row"
+          />
         </div>
       </div>
     </section>
