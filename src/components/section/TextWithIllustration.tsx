@@ -1,4 +1,4 @@
-import ImageComponent from './ImageComponent';
+import ImageComponent from '@/components/ImageComponent';
 
 interface TextWithIllustrationProps {
   data: {

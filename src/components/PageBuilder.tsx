@@ -1,10 +1,10 @@
 import { sanityFetch } from '@/sanity/lib/client';
 import { PAGE_BUILDER_QUERY } from '@/sanity/lib/queries';
-import Hero from './Hero';
-import CallToAction from './CallToAction';
-import TextWithIllustration from './TextWithIllustration';
-import Project from './Project';
-import Feature from './Feature';
+import Hero from '@/components/section/Hero';
+import CallToAction from '@/components/section/CallToAction';
+import TextWithIllustration from '@/components/section/TextWithIllustration';
+import Project from '@/components/section/Project';
+import Feature from '@/components/section/Feature';
 
 interface BaseSectionProp {
   _key: string;

@@ -1,7 +1,7 @@
 'use client';
 
 import TypewriterComponent from '@/components/Typewriter';
-import ButtonLink from './ButtonLink';
+import ButtonLink from '@/components/ButtonLink';
 
 interface HeroProps {
   data: {

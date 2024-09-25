@@ -1,5 +1,5 @@
-import ButtonLink from './ButtonLink';
-import ImageComponent from './ImageComponent';
+import ButtonLink from '@/components/ButtonLink';
+import ImageComponent from '@/components/ImageComponent';
 
 interface MissionStatementProps {
   missionStatement: {

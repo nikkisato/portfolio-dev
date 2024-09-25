@@ -1,8 +1,7 @@
 import { sanityFetch } from '@/sanity/lib/client';
 import { HEADER_QUERY } from '@/sanity/lib/queries';
-import DarkModeToggle from './DarkModeToggle';
-import ButtonLink from './ButtonLink';
-// import ImageComponent from './ImageComponent';
+import DarkModeToggle from '@/components/DarkModeToggle';
+import ButtonLink from '@/components/ButtonLink';
 
 export default async function Header() {
   const data = await sanityFetch({ query: HEADER_QUERY });
@@ -14,7 +13,7 @@ export default async function Header() {
   return (
     <div className="flex justify-between h-16 items-center border-b">
       {/* Navigation */}
-      <div className="mx-10">
+      <div className="mx-5 md:mx-10">
         <nav>
           <ButtonLink
             buttons={buttons}
@@ -36,7 +35,7 @@ export default async function Header() {
       </div>
 
       {/* Dark Mode Toggle */}
-      <div className="mx-10">
+      <div className="mx-5 md:mx-10">
         <DarkModeToggle />
       </div>
     </div>

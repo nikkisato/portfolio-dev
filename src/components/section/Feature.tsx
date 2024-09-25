@@ -7,7 +7,7 @@ import PlayCircleIcon from '@mui/icons-material/PlayCircle';
 import PersonIcon from '@mui/icons-material/Person';
 import PauseCircleIcon from '@mui/icons-material/PauseCircle';
 
-const renderFooterContent = () => {
+const renderFeatureContent = () => {
   switch (footer_type) {
     case 'simple_centered':
       return (

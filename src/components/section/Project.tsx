@@ -1,6 +1,6 @@
-import { sanityFetch } from '../sanity/lib/client';
-import ProjectItem from './ProjectItem';
-import { PROJECT_QUERY } from '../sanity/lib/queries';
+import { sanityFetch } from '@/sanity/lib/client';
+import ProjectItem from '@/components/ProjectItem';
+import { PROJECT_QUERY } from '@/sanity/lib/queries';
 
 interface ProjectProps {
   data: {

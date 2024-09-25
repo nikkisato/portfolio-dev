@@ -6,6 +6,17 @@ export const buttonLink = defineType({
   type: 'object',
   fields: [
     defineField({
+      name: 'text',
+      title: 'Text',
+      type: 'string',
+      description: 'The text that will be displayed on the button or link',
+      validation: (Rule) =>
+        Rule.required()
+          .min(1)
+          .max(100)
+          .error('Button/Link text is required and should be between 1 and 100 characters'),
+    }),
+    defineField({
       name: 'icon',
       title: 'Icon',
       type: 'string',
@@ -22,17 +33,7 @@ export const buttonLink = defineType({
         ],
       },
     }),
-    defineField({
-      name: 'text',
-      title: 'Text',
-      type: 'string',
-      description: 'The text that will be displayed on the button or link',
-      validation: (Rule) =>
-        Rule.required()
-          .min(1)
-          .max(100)
-          .error('Button/Link text is required and should be between 1 and 100 characters'),
-    }),
+
     defineField({
       name: 'url',
       title: 'URL',

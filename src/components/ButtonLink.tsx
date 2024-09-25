@@ -17,7 +17,9 @@ interface ButtonLinkProps {
   }>;
   spacing: 'horizontal' | 'vertical';
   direction: 'row' | 'column';
-  paddingLeftButton?: boolean;
+  removePaddingLeft?: boolean;
+  paddingButton?: boolean;
+  className?: string;
 }
 
 const getIconComponent = (iconName: string | undefined) => {
@@ -45,11 +47,14 @@ export default function ButtonLink({
   buttons,
   direction,
   spacing,
-  paddingLeftButton,
+  removePaddingLeft = false,
+  paddingButton = true,
+  className,
 }: ButtonLinkProps) {
   return (
     <ul
       className={classNames(
+        className,
         'flex',
         { 'flex-row': direction === 'row' },
         { 'flex-col': direction === 'column' },
@@ -62,7 +67,7 @@ export default function ButtonLink({
           <li key={button._key}>
             <a
               href={button.url}
-              className={`${button.style} ${paddingLeftButton ? /* True */ 'p-2' : /*False */ '0'} border-b-2 border-transparent hover:border-black dark:hover:border-white`}
+              className={`${button.style} ${removePaddingLeft ? 'pl-0' : ''} ${paddingButton ? 'p-2' : '0'} border-b-2 border-transparent hover:border-black dark:hover:border-white`}
               target={button.isExternal ? '_blank' : '_self'}
               rel={button.isExternal ? 'noopener noreferrer' : undefined}
             >

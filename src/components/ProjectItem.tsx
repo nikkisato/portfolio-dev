@@ -1,4 +1,4 @@
-import ButtonLink from './ButtonLink';
+import ButtonLink from '@/components/ButtonLink';
 
 interface ProjectItemProp {
   data: {
@@ -82,7 +82,11 @@ export default function ProjectItem({ data }: ProjectItemProp) {
           })}
       </div>
       <div>
-        <ButtonLink buttons={buttons} />
+        <ButtonLink
+          buttons={buttons}
+          direction="row"
+          spacing="horizontal"
+        />
       </div>
     </div>
   );
