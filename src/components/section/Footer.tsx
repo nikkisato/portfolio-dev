@@ -18,7 +18,7 @@ export default async function Footer() {
           <div className="flex flex-col items-center py-20 space-y-10">
             {/* Links */}
             <div className="flex flex-wrap justify-center max-w-full">
-              {columns[0].buttons && (
+              {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
                   spacing="horizontal"
@@ -28,7 +28,7 @@ export default async function Footer() {
             </div>
             {/* Icons */}
             <div className="">
-              {columns[1].buttons && (
+              {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
                   spacing="horizontal"
@@ -43,7 +43,7 @@ export default async function Footer() {
       case 'social_only':
         return (
           <div className="flex flex-col md:flex-row justify-between items-center space-y-5 md:space-y-0 py-7">
-            {columns[0].buttons && (
+            {columns[0] && columns[0].buttons && (
               <ButtonLink
                 buttons={columns[0].buttons}
                 spacing="horizontal"
@@ -58,8 +58,10 @@ export default async function Footer() {
           <div className="flex justify-center items-center space-x-20 py-20">
             {/* Column 1 */}
             <div className="flex flex-col">
-              {columns[0].columnTitle && <h3 className="font-bold">{columns[0].columnTitle}</h3>}
-              {columns[0].buttons && (
+              {columns[0] && columns[0].columnTitle && (
+                <h3 className="font-bold">{columns[0].columnTitle}</h3>
+              )}
+              {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
                   spacing="vertical"
@@ -70,8 +72,10 @@ export default async function Footer() {
 
             {/* Column 2 */}
             <div>
-              {columns[1].columnTitle && <h3 className="font-bold">{columns[1].columnTitle}</h3>}
-              {columns[1].buttons && (
+              {columns[1] && columns[1].columnTitle && (
+                <h3 className="font-bold">{columns[1].columnTitle}</h3>
+              )}
+              {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
                   spacing="vertical"
@@ -82,8 +86,10 @@ export default async function Footer() {
 
             {/* Column 3 */}
             <div>
-              {columns[2].columnTitle && <h3 className="font-bold">{columns[2].columnTitle}</h3>}
-              {columns[2].buttons && (
+              {columns[2] && columns[2].columnTitle && (
+                <h3 className="font-bold">{columns[2].columnTitle}</h3>
+              )}
+              {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
                   spacing="vertical"
@@ -94,8 +100,10 @@ export default async function Footer() {
 
             {/* Column 4 */}
             <div>
-              {columns[3].columnTitle && <h3 className="font-bold">{columns[3].columnTitle}</h3>}
-              {columns[3].buttons && (
+              {columns[3] && columns[3].columnTitle && (
+                <h3 className="font-bold">{columns[3].columnTitle}</h3>
+              )}
+              {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
                   spacing="vertical"
@@ -110,8 +118,10 @@ export default async function Footer() {
           <div className="grid grid-flow-row-dense grid-cols-2 gap-10 md:grid-cols-6 md:gap-15 py-20">
             {/* Column 1 */}
             <div className="flex flex-col">
-              {columns[0].columnTitle && <h3 className="font-bold">{columns[0].columnTitle}</h3>}
-              {columns[0].buttons && (
+              {columns[0] && columns[0].columnTitle && (
+                <h3 className="font-bold">{columns[0].columnTitle}</h3>
+              )}
+              {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
                   spacing="vertical"
@@ -122,8 +132,10 @@ export default async function Footer() {
 
             {/* Column 2 */}
             <div>
-              {columns[1].columnTitle && <h3 className="font-bold">{columns[1].columnTitle}</h3>}
-              {columns[1].buttons && (
+              {columns[1] && columns[1].columnTitle && (
+                <h3 className="font-bold">{columns[1].columnTitle}</h3>
+              )}
+              {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
                   spacing="vertical"
@@ -134,8 +146,10 @@ export default async function Footer() {
 
             {/* Column 3 */}
             <div>
-              {columns[2].columnTitle && <h3 className="font-bold">{columns[2].columnTitle}</h3>}
-              {columns[2].buttons && (
+              {columns[2] && columns[2].columnTitle && (
+                <h3 className="font-bold">{columns[2].columnTitle}</h3>
+              )}
+              {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
                   spacing="vertical"
@@ -146,8 +160,10 @@ export default async function Footer() {
 
             {/* Column 4 */}
             <div>
-              {columns[3].columnTitle && <h3 className="font-bold">{columns[3].columnTitle}</h3>}
-              {columns[3].buttons && (
+              {columns[3] && columns[3].columnTitle && (
+                <h3 className="font-bold">{columns[3].columnTitle}</h3>
+              )}
+              {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
                   spacing="vertical"
@@ -167,8 +183,10 @@ export default async function Footer() {
           <div className="grid grid-flow-row-dense grid-cols-2 gap-10 md:grid-cols-6 md:gap-15 py-20">
             {/* Column 1 */}
             <div className="sm:order-1 md:order-2">
-              {columns[0].columnTitle && <h3 className="font-bold">{columns[0].columnTitle}</h3>}
-              {columns[0].buttons && (
+              {columns[0] && columns[0].columnTitle && (
+                <h3 className="font-bold">{columns[0].columnTitle}</h3>
+              )}
+              {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
                   spacing="vertical"
@@ -179,8 +197,10 @@ export default async function Footer() {
 
             {/* Column 2 */}
             <div className="sm:order-2 md:order-3">
-              {columns[1].columnTitle && <h3 className="font-bold">{columns[1].columnTitle}</h3>}
-              {columns[1].buttons && (
+              {columns[1] && columns[1].columnTitle && (
+                <h3 className="font-bold">{columns[1].columnTitle}</h3>
+              )}
+              {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
                   spacing="vertical"
@@ -191,8 +211,10 @@ export default async function Footer() {
 
             {/* Column 3 */}
             <div className="sm:order-3 md:order-4">
-              {columns[2].columnTitle && <h3 className="font-bold">{columns[2].columnTitle}</h3>}
-              {columns[2].buttons && (
+              {columns[2] && columns[2].columnTitle && (
+                <h3 className="font-bold">{columns[2].columnTitle}</h3>
+              )}
+              {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
                   spacing="vertical"
@@ -203,8 +225,10 @@ export default async function Footer() {
 
             {/* Column 4 */}
             <div className="sm:order-4 md:order-">
-              {columns[3].columnTitle && <h3 className="font-bold">{columns[3].columnTitle}</h3>}
-              {columns[3].buttons && (
+              {columns[3] && columns[3].columnTitle && (
+                <h3 className="font-bold">{columns[3].columnTitle}</h3>
+              )}
+              {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
                   spacing="vertical"
@@ -223,8 +247,10 @@ export default async function Footer() {
           <div className="grid grid-flow-row-dense grid-cols-2 gap-10 md:grid-cols-6 md:gap-15 py-20">
             {/* Column 1 */}
             <div className="sm:order-1 md:order-2">
-              {columns[0].columnTitle && <h3 className="font-bold">{columns[0].columnTitle}</h3>}
-              {columns[0].buttons && (
+              {columns[0] && columns[0].columnTitle && (
+                <h3 className="font-bold">{columns[0].columnTitle}</h3>
+              )}
+              {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
                   spacing="vertical"
@@ -235,8 +261,10 @@ export default async function Footer() {
 
             {/* Column 2 */}
             <div className="sm:order-2 md:order-3">
-              {columns[1].columnTitle && <h3 className="font-bold">{columns[1].columnTitle}</h3>}
-              {columns[1].buttons && (
+              {columns[1] && columns[1].columnTitle && (
+                <h3 className="font-bold">{columns[1].columnTitle}</h3>
+              )}
+              {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
                   spacing="vertical"
@@ -247,8 +275,10 @@ export default async function Footer() {
 
             {/* Column 3 */}
             <div className="sm:order-3 md:order-4">
-              {columns[2].columnTitle && <h3 className="font-bold">{columns[2].columnTitle}</h3>}
-              {columns[2].buttons && (
+              {columns[2] && columns[2].columnTitle && (
+                <h3 className="font-bold">{columns[2].columnTitle}</h3>
+              )}
+              {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
                   spacing="vertical"
@@ -259,8 +289,10 @@ export default async function Footer() {
 
             {/* Column 4 */}
             <div className="sm:order-4 md:order-">
-              {columns[3].columnTitle && <h3 className="font-bold">{columns[3].columnTitle}</h3>}
-              {columns[3].buttons && (
+              {columns[3] && columns[3].columnTitle && (
+                <h3 className="font-bold">{columns[3].columnTitle}</h3>
+              )}
+              {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
                   spacing="vertical"
@@ -279,8 +311,10 @@ export default async function Footer() {
           <div className="grid grid-flow-row-dense grid-cols-2 gap-10 md:grid-cols-6 md:gap-15 py-20">
             {/* Column 1 */}
             <div className="flex flex-col">
-              {columns[0].columnTitle && <h3 className="font-bold">{columns[0].columnTitle}</h3>}
-              {columns[0].buttons && (
+              {columns[0] && columns[0].columnTitle && (
+                <h3 className="font-bold">{columns[0].columnTitle}</h3>
+              )}
+              {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
                   spacing="vertical"
@@ -291,8 +325,10 @@ export default async function Footer() {
 
             {/* Column 2 */}
             <div>
-              {columns[1].columnTitle && <h3 className="font-bold">{columns[1].columnTitle}</h3>}
-              {columns[1].buttons && (
+              {columns[1] && columns[1].columnTitle && (
+                <h3 className="font-bold">{columns[1].columnTitle}</h3>
+              )}
+              {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
                   spacing="vertical"
@@ -303,8 +339,10 @@ export default async function Footer() {
 
             {/* Column 3 */}
             <div>
-              {columns[2].columnTitle && <h3 className="font-bold">{columns[2].columnTitle}</h3>}
-              {columns[2].buttons && (
+              {columns[2] && columns[2].columnTitle && (
+                <h3 className="font-bold">{columns[2].columnTitle}</h3>
+              )}
+              {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
                   spacing="vertical"
@@ -315,8 +353,10 @@ export default async function Footer() {
 
             {/* Column 4 */}
             <div>
-              {columns[3].columnTitle && <h3 className="font-bold">{columns[3].columnTitle}</h3>}
-              {columns[3].buttons && (
+              {columns[3] && columns[3].columnTitle && (
+                <h3 className="font-bold">{columns[3].columnTitle}</h3>
+              )}
+              {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
                   spacing="vertical"

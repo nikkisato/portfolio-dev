@@ -6,8 +6,13 @@ export const featureSection = defineType({
   title: 'Feature Section',
   fields: [
     defineField({
-      name: 'footer_type',
-      title: 'Footer Type',
+      name: 'title',
+      type: 'string',
+      title: 'Title',
+    }),
+    defineField({
+      name: 'feature_type',
+      title: 'Feature Type',
       type: 'string',
       options: {
         list: [
@@ -32,7 +37,7 @@ export const featureSection = defineType({
           { title: 'With Large Screenshot', value: 'with_large_screenshot' },
           { title: 'Centered 2x2 Grid', value: 'centered_2x2_grid' },
         ],
-        layout: 'dropdown',
+        layout: 'radio',
       },
     }),
     defineField({
@@ -41,14 +46,21 @@ export const featureSection = defineType({
       title: 'Eyebrow',
     }),
     defineField({
-      name: 'title',
-      type: 'string',
-      title: 'Title',
-    }),
-    defineField({
       name: 'content',
       type: 'blockContent',
       title: 'Content',
+    }),
+    defineField({
+      name: 'image',
+      title: 'Image',
+      type: 'image',
+      description: 'Image for the Feature section',
+      hidden: ({ parent }) =>
+        ![
+          'with_product_screenshot_on_left',
+          'with_product_screenshot_on_right',
+          'with_large_screenshot',
+        ].includes(parent?.feature_type),
     }),
     defineField({
       name: 'featureItems',

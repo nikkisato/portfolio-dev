@@ -32,7 +32,7 @@ export const footerType = defineType({
           { title: '4-column with Left company mission', value: '4_column_with_left_mission' },
           { title: '4-column with Right company mission', value: '4_column_with_right_mission' },
         ],
-        layout: 'dropdown',
+        layout: 'radio',
       },
     }),
     defineField({

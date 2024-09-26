@@ -23,14 +23,28 @@ export const buttonLink = defineType({
       description: 'Select an icon for this feature',
       options: {
         list: [
-          { title: 'Facebook', value: 'FacebookIcon' },
-          { title: 'Github', value: 'GitHubIcon' },
-          { title: 'X', value: 'XIcon' },
-          { title: 'Youtube', value: 'YouTubeIcon' },
+          { title: 'Facebook', value: 'Facebook' },
+          { title: 'Github', value: 'GitHub' },
+          { title: 'X', value: 'X' },
+          { title: 'Youtube', value: 'YouTube' },
           { title: 'Instagram', value: 'InstagramCircle' },
-          { title: 'Email', value: 'EmailIcon' },
-          { title: 'Linkedin', value: 'LinkedinIcon' },
+          { title: 'Email', value: 'Email' },
+          { title: 'Linkedin', value: 'Linkedin' },
         ],
+      },
+    }),
+    defineField({
+      name: 'button_link_type',
+      title: 'Button Link Type',
+      type: 'string',
+      validation: (Rule) => Rule.required().error('Button Link Type is required.'),
+      options: {
+        list: [
+          { title: 'Icon Only', value: 'icon_only' },
+          { title: 'Text Only No Icon', value: 'text_only_no_icons' },
+          { title: 'Icon and Text', value: 'icon_and_text' },
+        ],
+        layout: 'radio',
       },
     }),
 

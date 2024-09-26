@@ -1,91 +1,382 @@
-import StarIcon from '@mui/icons-material/Star';
-import SyncIcon from '@mui/icons-material/Sync';
-import SortIcon from '@mui/icons-material/Sort';
-import ShareIcon from '@mui/icons-material/Share';
-import SettingsIcon from '@mui/icons-material/Settings';
-import PlayCircleIcon from '@mui/icons-material/PlayCircle';
-import PersonIcon from '@mui/icons-material/Person';
-import PauseCircleIcon from '@mui/icons-material/PauseCircle';
+import ButtonLink from '@/components/ButtonLink';
+import BlockContent from '@/components/BlockContent';
+import ImageComponent from '@/components/ImageComponent';
+import getIconComponent from '@/components/getIconComponent';
+interface FeatureProps {
+  data: {
+    feature_type: string;
+    _key: string;
+    eyebrow: string;
+    title: string;
+    image: {
+      asset: {
+        _ref: string;
+      };
+      alt: string;
+    };
+    content: {
+      _key: string;
+      style: string;
+      listItem?: string | undefined;
+      children: { text: string; marks?: string[] | undefined }[];
+    }[];
+    featureItems: Array<{
+      heading: string;
+      icon?: string;
+      description: {
+        _key: string;
+        style: string;
+        listItem?: string | undefined;
+        children: { text: string; marks?: string[] | undefined }[];
+      }[];
+      buttons: Array<{
+        text: string;
+        url: string;
+        style: string;
+        isExternal: boolean;
+        _key: string;
+        button_link_type: string;
+      }>;
+      image: {
+        asset: {
+          _ref: string;
+        };
+        alt: string;
+      };
+      _key: string;
+    }>;
+  };
+}
+export default function Feature({ data }: FeatureProps) {
+  const { eyebrow, content, title, feature_type, featureItems, image } = data;
 
-const renderFeatureContent = () => {
-  switch (footer_type) {
-    case 'simple_centered':
+  // Simple - getIconComponent("small")
+  const renderFeatureItems = (iconSize: 'small' | 'large') =>
+    featureItems.map((item, index) => {
       return (
-        <div>
-          <h3>{columnTitle}</h3>
-          <ButtonLink buttons={buttons} />
+        <div
+          key={item._key}
+          className="flex flex-col space-y-3"
+        >
+          <div className={`flex ${iconSize === 'large' ? 'flex-col' : 'flex-row'}`}>
+            {item.icon && iconSize === 'small' && getIconComponent(item.icon, iconSize)}
+
+            {item.heading && (
+              <h3
+                className={`font-bold ${item.icon && iconSize === 'small' && item.heading ? 'ml-2' : ''} ${item.icon && iconSize === 'large' ? 'pt-2' : ''} `}
+              >
+                {item.heading}
+              </h3>
+            )}
+          </div>
+          {item.description && <BlockContent data={item.description} />}
+          {item.buttons && (
+            <ButtonLink
+              buttons={item.buttons}
+              spacing="vertical"
+              direction="column"
+              removePaddingLeft={true}
+            />
+          )}
         </div>
       );
-    case 'simple_two_columns_with_small_icons':
-      return <div>Two columns with small icons</div>;
-    case 'simple_three_columns_with_small_icons':
-      return <div>Three columns with small icons</div>;
-    case 'simple_three_columns_with_large_icons':
-      return <div>Three columns with large icons</div>;
-    case 'with_product_screenshot_on_left':
-      return <div>Product screenshot on left</div>;
-    case 'with_product_screenshot_on_right':
-      return <div>Product screenshot on right</div>;
-    case 'offset_2x2_grid':
-      return <div>Offset 2x2 grid</div>;
-    case 'offset_with_feature_list':
-      return <div>Offset with feature list</div>;
-    case 'with_large_screenshot':
-      return <div>With large screenshot</div>;
-    case 'centered_2x2_grid':
-      return <div>Centered 2x2 grid</div>;
-    default:
-      return <div>Default footer content</div>;
-  }
-};
+    });
+  // TODO add the ability to have heading and content be on the same line and flow for inline elements
+  const renderOffsetFeatureItems = (
+    iconSize: 'small' | 'large',
+    iconPosition: 'offset' | 'inline' | 'above',
+    contentPosition: 'inline' | 'block'
+  ) =>
+    featureItems.map((item, index) => {
+      return (
+        <div
+          key={item._key}
+          className="flex flex-col space-y-3"
+        >
+          <div className={`flex ${iconSize === 'large' ? 'flex-col space-y-5' : 'flex-row'}`}>
+            {/* Large Icon Above Block Heading and Content   */}
+            {item.icon &&
+              iconSize == 'large' &&
+              iconPosition == 'above' &&
+              item.heading &&
+              item.description &&
+              contentPosition === 'block' && (
+                <>
+                  {getIconComponent(item.icon, iconSize)}
+                  <div className="flex flex-col space-y-3">
+                    <h3 className={`font-bold `}>{item.heading}</h3>
 
-// https://tailwindui.com/components/marketing/sections/feature-sections
+                    <BlockContent data={item.description} />
 
-// interface FeatureProps {
-//   heading: string;
-//   content: string;
-//   featureItems: Array<{
-//     eyebrow: string;
-//     icon: string;
-//     heading: string;
-//     description: string;
-//     featureImage: { asset: { _ref: string }; alt: string };
-//   }
-// }
+                    {item.buttons && (
+                      <ButtonLink
+                        buttons={item.buttons}
+                        spacing="vertical"
+                        direction="column"
+                        removePaddingLeft={true}
+                      />
+                    )}
+                  </div>
+                </>
+              )}
 
-export default function Feature({ data }) {
-  // const renderFeatureContent = () => {
-  //   switch (footer_type) {
-  //     case 'simple_centered':
-  //       return (
-  //         <div>
-  //           <h3>{columnTitle}</h3>
-  //           <ButtonLink buttons={buttons} />
-  //         </div>
-  //       );
-  //     case 'simple_two_columns_with_small_icons':
-  //       return <div>Two columns with small icons</div>;
-  //     case 'simple_three_columns_with_small_icons':
-  //       return <div>Three columns with small icons</div>;
-  //     case 'simple_three_columns_with_large_icons':
-  //       return <div>Three columns with large icons</div>;
-  //     case 'with_product_screenshot_on_left':
-  //       return <div>Product screenshot on left</div>;
-  //     case 'with_product_screenshot_on_right':
-  //       return <div>Product screenshot on right</div>;
-  //     case 'offset_2x2_grid':
-  //       return <div>Offset 2x2 grid</div>;
-  //     case 'offset_with_feature_list':
-  //       return <div>Offset with feature list</div>;
-  //     case 'with_large_screenshot':
-  //       return <div>With large screenshot</div>;
-  //     case 'centered_2x2_grid':
-  //       return <div>Centered 2x2 grid</div>;
-  //     default:
-  //       return <div>Default footer content</div>;
-  //   }
-  // };
+            {/* centered 2x2  - getIconComponent("large", "offset", "block" ) */}
+            {/* Large Icon Offset Block Heading and Content   */}
+            {item.icon &&
+              iconSize == 'large' &&
+              iconPosition == 'offset' &&
+              item.heading &&
+              item.description &&
+              contentPosition === 'block' && (
+                <>
+                  <div className="flex flex-row space-y-2">
+                    {getIconComponent(item.icon, iconSize)}
+                    <h3 className={`font-bold ${iconPosition === 'offset' ? 'ml-2' : ''} `}>
+                      {item.heading}
+                    </h3>
+                  </div>
+                  <BlockContent
+                    className="ml-11"
+                    data={item.description}
+                  />
+                  {item.buttons && (
+                    <ButtonLink
+                      className="ml-11"
+                      buttons={item.buttons}
+                      spacing="vertical"
+                      direction="column"
+                      removePaddingLeft={true}
+                    />
+                  )}
+                </>
+              )}
+            {/* Simple two columns with Small Icons - getIconComponent("small", "offset", "block" ) */}
+            {/* Small Icon Offset Block Heading and Content   */}
+            {item.icon &&
+              iconSize == 'small' &&
+              iconPosition == 'offset' &&
+              item.heading &&
+              item.description &&
+              contentPosition === 'block' && (
+                <>
+                  {getIconComponent(item.icon, iconSize)}
+                  <div className="flex flex-col space-y-2">
+                    <h3 className={`font-bold ${iconPosition === 'offset' ? 'ml-2' : ''} `}>
+                      {item.heading}
+                    </h3>
 
-  const { heading, content, buttons } = data;
-  return <div></div>;
+                    <BlockContent
+                      className="ml-2"
+                      data={item.description}
+                    />
+
+                    {item.buttons && (
+                      <ButtonLink
+                        className="ml-2"
+                        buttons={item.buttons}
+                        spacing="vertical"
+                        direction="column"
+                        removePaddingLeft={true}
+                      />
+                    )}
+                  </div>
+                </>
+              )}
+            {/* // TODO add the ability to have heading and content be on the same line and flow */}
+            {/* Small Icon Offset Inline Heading and Content   */}
+            {item.icon &&
+              iconSize == 'small' &&
+              iconPosition === 'offset' &&
+              item.heading &&
+              item.description &&
+              contentPosition === 'inline' && (
+                <>
+                  please choose another option
+                  {/* {getIconComponent(item.icon, iconSize)}
+                  <div className="text-wrap">
+                    <h3 className="whitespace-nowrap">{item.heading}</h3>
+
+                    <div className="flex-1">
+                      <BlockContent
+                        className="inline"
+                        data={item.description}
+                      />
+                    </div>
+                  </div>
+                  {item.buttons && (
+                    <ButtonLink
+                      className="ml-2"
+                      buttons={item.buttons}
+                      spacing="vertical"
+                      direction="column"
+                      removePaddingLeft={true}
+                    />
+                  )} */}
+                </>
+              )}
+          </div>
+        </div>
+      );
+    });
+
+  const renderFeatureContent = () => {
+    switch (feature_type) {
+      case 'simple':
+        return (
+          <div className="flex flex-col py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col space-y-4 md:space-y-5 py-16 max-w-3xl">
+              <span>{eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title}</h3>
+              <BlockContent data={content} />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
+              {renderFeatureItems('small')}
+            </div>
+          </div>
+        );
+      case 'simple_two_columns_with_small_icons':
+        return (
+          <div className="flex flex-col py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col space-y-2 md:space-y-5 py-16 max-w-3xl">
+              <span>{eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title}</h3>
+              <BlockContent data={content} />
+            </div>
+            <div className="grid grid-cols-2 gap-16">
+              {renderOffsetFeatureItems('small', 'offset', 'block')}
+            </div>
+          </div>
+        );
+      case 'simple_three_columns_with_small_icons':
+        return (
+          <div className="flex flex-col justify-center items-center py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col justify-center items-center space-y-2 md:space-y-5 py-16 max-w-xl">
+              <span>{eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title}</h3>
+              <BlockContent data={content} />
+            </div>
+            <div className="grid grid-cols-3 gap-16">{renderFeatureItems('small')}</div>
+          </div>
+        );
+      case 'simple_three_columns_with_large_icons':
+        return (
+          <div className="flex flex-col py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col space-y-2 md:space-y-5 py-16 max-w-3xl">
+              <span>{eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title}</h3>
+              <BlockContent data={content} />
+            </div>
+            <div className="grid grid-cols-2 gap-16">
+              {renderOffsetFeatureItems('large', 'above', 'block')}
+            </div>
+          </div>
+        );
+      case 'with_product_screenshot_on_left':
+        return (
+          <div className="grid lg:grid-cols-2 gap-16 py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col lg:order-2 space-y-4 md:space-y-5 max-w-xl">
+              <span>{eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title}</h3>
+              <BlockContent data={content} />
+              <div className="grid grid-cols-1 gap-16">{renderFeatureItems('small')}</div>
+            </div>
+            <div className="lg:order-1">
+              <ImageComponent image={image} />
+            </div>
+          </div>
+        );
+      case 'with_product_screenshot_on_right':
+        return (
+          <div className="grid lg:grid-cols-2 gap-16 py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col space-y-2 md:space-y-5 max-w-xl">
+              <span>{eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title}</h3>
+              <BlockContent data={content} />
+              <div className="grid grid-cols-1 gap-16">{renderFeatureItems('small')}</div>
+            </div>
+            <div>
+              <ImageComponent image={image} />
+            </div>
+          </div>
+        );
+      case 'offset_2x2_grid':
+        return (
+          <div className="grid lg:grid-flow-col py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col space-y-5 max-w-md">
+              <span>{eyebrow && eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title && title}</h3>
+              {content && <BlockContent data={content} />}
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {renderOffsetFeatureItems('large', 'above', 'block')}
+            </div>
+          </div>
+        );
+      case 'offset_with_feature_list':
+        return (
+          <div className="grid lg:grid-flow-col gap-8 py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col space-y-5 max-w-md pb-5">
+              <span>{eyebrow && eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title && title}</h3>
+              {content && <BlockContent data={content} />}
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+              {renderOffsetFeatureItems('small', 'offset', 'block')}
+            </div>
+          </div>
+        );
+      case 'with_large_screenshot':
+        return (
+          <div className="flex flex-col justify-center items-center gap-16 py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col space-y-2 lg:text-center md:space-y-5 max-w-4xl">
+              <span>{eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title}</h3>
+              <BlockContent data={content} />
+            </div>
+
+            <div>
+              <ImageComponent
+                image={image}
+                widthOverride={1600}
+              />
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {renderOffsetFeatureItems('small', 'offset', 'block')}
+            </div>
+          </div>
+        );
+      case 'centered_2x2_grid':
+        return (
+          <div className="flex flex-col lg:justify-center lg:items-center py-20 md:px-32 lg:px-0">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col lg:justify-center lg:text-center lg:items-center space-y-5 max-w-xl py-8">
+              <span>{eyebrow && eyebrow}</span>
+              <h3 className="font-bold text-4xl">{title && title}</h3>
+              {content && <BlockContent data={content} />}
+            </div>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl">
+              {renderOffsetFeatureItems('large', 'offset', 'block')}
+            </div>
+          </div>
+        );
+      default:
+        return <div>Default footer content</div>;
+    }
+  };
+
+  return (
+    <section className="p-4 border-t">
+      <h2 className="sr-only">{title}</h2>
+      <div className="container mx-auto">{renderFeatureContent()}</div>
+    </section>
+  );
 }

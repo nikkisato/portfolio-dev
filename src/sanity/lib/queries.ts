@@ -7,3 +7,4 @@ export const HEADER_QUERY = defineQuery(`*[_type == "header"][0]`);
 export const FOOTER_QUERY = defineQuery(`*[_type == "footer"][0]`);
 
 export const PROJECT_QUERY = defineQuery(`*[_type == "project"]`);
+export const FEATURE_QUERY = defineQuery(`*[_type == "feature"][0]`);
