@@ -36,6 +36,7 @@ export const featureSection = defineType({
           { title: 'Offset with Feature List', value: 'offset_with_feature_list' },
           { title: 'With Large Screenshot', value: 'with_large_screenshot' },
           { title: 'Centered 2x2 Grid', value: 'centered_2x2_grid' },
+          { title: 'Simple Three Columns Cards', value: 'simple_three_columns_cards' },
         ],
         layout: 'radio',
       },

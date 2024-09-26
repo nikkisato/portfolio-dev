@@ -29,6 +29,12 @@ interface FeatureProps {
         listItem?: string | undefined;
         children: { text: string; marks?: string[] | undefined }[];
       }[];
+      featureImage: {
+        asset: {
+          _ref: string;
+        };
+        alt: string;
+      };
       buttons: Array<{
         text: string;
         url: string;
@@ -49,6 +55,8 @@ interface FeatureProps {
 }
 export default function Feature({ data }: FeatureProps) {
   const { eyebrow, content, title, feature_type, featureItems, image } = data;
+
+  console.log('HELLO', featureItems.featureImage);
 
   // Simple - getIconComponent("small")
   const renderFeatureItems = (iconSize: 'small' | 'large') =>
@@ -219,6 +227,67 @@ export default function Feature({ data }: FeatureProps) {
       );
     });
 
+  const getRandomRotateClass = () => {
+    const rotateClasses = [
+      'rotate-0',
+      'rotate-1',
+      'rotate-2',
+      'rotate-3',
+      '-rotate-1',
+      '-rotate-2',
+      '-rotate-3',
+    ];
+    return rotateClasses[Math.floor(Math.random() * rotateClasses.length)];
+  };
+
+  const renderFeatureCardItems = (iconSize: 'small' | 'large') =>
+    featureItems.map((item, index) => {
+      const randomRotateClass = getRandomRotateClass();
+
+      return (
+        <div
+          key={item._key}
+          className={`flex flex-col border-2 border-black ${randomRotateClass}`}
+        >
+          <div className="border-8 mt-4 border-white flex justify-center items-center">
+            {item.featureImage && (
+              <ImageComponent
+                image={item.featureImage}
+                widthOverride={300}
+                heightOverride={300}
+              />
+            )}
+          </div>
+          <div className="p-8 bg-white text-black space-y-2">
+            <div
+              className={`flex flex-row justify-center items-center  ${iconSize === 'large' ? 'flex-col' : 'flex-row'}`}
+            >
+              {item.icon && iconSize === 'small' && getIconComponent(item.icon, iconSize)}
+
+              {item.heading && (
+                <h3
+                  className={`font-bold ${item.icon && iconSize === 'small' && item.heading ? 'ml-2' : ''} ${item.icon && iconSize === 'large' ? 'pt-2' : ''} `}
+                >
+                  {item.heading}
+                </h3>
+              )}
+            </div>
+            <div className="flex flex-col justify-center items-center">
+              {item.description && <BlockContent data={item.description} />}
+              {item.buttons && (
+                <ButtonLink
+                  buttons={item.buttons}
+                  spacing="vertical"
+                  direction="column"
+                  removePaddingLeft={true}
+                />
+              )}
+            </div>
+          </div>
+        </div>
+      );
+    });
+
   const renderFeatureContent = () => {
     switch (feature_type) {
       case 'simple':
@@ -226,9 +295,9 @@ export default function Feature({ data }: FeatureProps) {
           <div className="flex flex-col py-20">
             {/* Outside Feature List Items */}
             <div className="flex flex-col space-y-4 md:space-y-5 py-16 max-w-3xl">
-              <span>{eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title}</h3>
-              <BlockContent data={content} />
+              <span>{eyebrow && eyebrow}</span>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
+              {content && <BlockContent data={content} />}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
               {renderFeatureItems('small')}
@@ -240,9 +309,9 @@ export default function Feature({ data }: FeatureProps) {
           <div className="flex flex-col py-20">
             {/* Outside Feature List Items */}
             <div className="flex flex-col space-y-2 md:space-y-5 py-16 max-w-3xl">
-              <span>{eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title}</h3>
-              <BlockContent data={content} />
+              <span>{eyebrow && eyebrow}</span>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
+              {content && <BlockContent data={content} />}
             </div>
             <div className="grid grid-cols-2 gap-16">
               {renderOffsetFeatureItems('small', 'offset', 'block')}
@@ -254,9 +323,9 @@ export default function Feature({ data }: FeatureProps) {
           <div className="flex flex-col justify-center items-center py-20">
             {/* Outside Feature List Items */}
             <div className="flex flex-col justify-center items-center space-y-2 md:space-y-5 py-16 max-w-xl">
-              <span>{eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title}</h3>
-              <BlockContent data={content} />
+              <span>{eyebrow && eyebrow}</span>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
+              {content && <BlockContent data={content} />}
             </div>
             <div className="grid grid-cols-3 gap-16">{renderFeatureItems('small')}</div>
           </div>
@@ -266,9 +335,9 @@ export default function Feature({ data }: FeatureProps) {
           <div className="flex flex-col py-20">
             {/* Outside Feature List Items */}
             <div className="flex flex-col space-y-2 md:space-y-5 py-16 max-w-3xl">
-              <span>{eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title}</h3>
-              <BlockContent data={content} />
+              <span>{eyebrow && eyebrow}</span>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
+              {content && <BlockContent data={content} />}
             </div>
             <div className="grid grid-cols-2 gap-16">
               {renderOffsetFeatureItems('large', 'above', 'block')}
@@ -280,9 +349,9 @@ export default function Feature({ data }: FeatureProps) {
           <div className="grid lg:grid-cols-2 gap-16 py-20">
             {/* Outside Feature List Items */}
             <div className="flex flex-col lg:order-2 space-y-4 md:space-y-5 max-w-xl">
-              <span>{eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title}</h3>
-              <BlockContent data={content} />
+              <span>{eyebrow && eyebrow}</span>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
+              {content && <BlockContent data={content} />}
               <div className="grid grid-cols-1 gap-16">{renderFeatureItems('small')}</div>
             </div>
             <div className="lg:order-1">
@@ -295,9 +364,10 @@ export default function Feature({ data }: FeatureProps) {
           <div className="grid lg:grid-cols-2 gap-16 py-20">
             {/* Outside Feature List Items */}
             <div className="flex flex-col space-y-2 md:space-y-5 max-w-xl">
-              <span>{eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title}</h3>
-              <BlockContent data={content} />
+              <span>{eyebrow && eyebrow}</span>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
+
+              {content && <BlockContent data={content} />}
               <div className="grid grid-cols-1 gap-16">{renderFeatureItems('small')}</div>
             </div>
             <div>
@@ -311,7 +381,7 @@ export default function Feature({ data }: FeatureProps) {
             {/* Outside Feature List Items */}
             <div className="flex flex-col space-y-5 max-w-md">
               <span>{eyebrow && eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title && title}</h3>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
               {content && <BlockContent data={content} />}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -325,7 +395,7 @@ export default function Feature({ data }: FeatureProps) {
             {/* Outside Feature List Items */}
             <div className="flex flex-col space-y-5 max-w-md pb-5">
               <span>{eyebrow && eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title && title}</h3>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
               {content && <BlockContent data={content} />}
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
@@ -338,9 +408,9 @@ export default function Feature({ data }: FeatureProps) {
           <div className="flex flex-col justify-center items-center gap-16 py-20">
             {/* Outside Feature List Items */}
             <div className="flex flex-col space-y-2 lg:text-center md:space-y-5 max-w-4xl">
-              <span>{eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title}</h3>
-              <BlockContent data={content} />
+              <span>{eyebrow && eyebrow}</span>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
+              {content && <BlockContent data={content} />}
             </div>
 
             <div>
@@ -360,12 +430,24 @@ export default function Feature({ data }: FeatureProps) {
             {/* Outside Feature List Items */}
             <div className="flex flex-col lg:justify-center lg:text-center lg:items-center space-y-5 max-w-xl py-8">
               <span>{eyebrow && eyebrow}</span>
-              <h3 className="font-bold text-4xl">{title && title}</h3>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
               {content && <BlockContent data={content} />}
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl">
               {renderOffsetFeatureItems('large', 'offset', 'block')}
             </div>
+          </div>
+        );
+      case 'simple_three_columns_cards':
+        return (
+          <div className="flex flex-col justify-center items-center py-20">
+            {/* Outside Feature List Items */}
+            <div className="flex flex-col justify-center items-center space-y-2 md:space-y-5 py-16 max-w-xl">
+              <span>{eyebrow && eyebrow}</span>
+              <h2 className="font-bold text-4xl">{title && title}</h2>
+              {content && <BlockContent data={content} />}
+            </div>
+            <div className="grid grid-cols-3 gap-16">{renderFeatureCardItems('small')}</div>
           </div>
         );
       default:
@@ -375,7 +457,6 @@ export default function Feature({ data }: FeatureProps) {
 
   return (
     <section className="p-4 border-t">
-      <h2 className="sr-only">{title}</h2>
       <div className="container mx-auto">{renderFeatureContent()}</div>
     </section>
   );
