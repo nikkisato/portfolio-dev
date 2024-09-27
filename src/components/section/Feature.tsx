@@ -37,7 +37,7 @@ export default function Feature({ data }: FeatureProps) {
 
   // Simple - getIconComponent("small")
   const renderFeatureItems = (iconSize: 'small' | 'large') =>
-    featureItems.map((item, index) => {
+    featureItems.map((item) => {
       return (
         <div
           key={item._key}
@@ -72,7 +72,7 @@ export default function Feature({ data }: FeatureProps) {
     iconPosition: 'offset' | 'inline' | 'above',
     contentPosition: 'inline' | 'block'
   ) =>
-    featureItems.map((item, index) => {
+    featureItems.map((item) => {
       return (
         <div
           key={item._key}
@@ -218,7 +218,7 @@ export default function Feature({ data }: FeatureProps) {
   };
 
   const renderFeatureCardItems = (iconSize: 'small' | 'large') =>
-    featureItems.map((item, index) => {
+    featureItems.map((item) => {
       const randomRotateClass = getRandomRotateClass();
 
       return (
