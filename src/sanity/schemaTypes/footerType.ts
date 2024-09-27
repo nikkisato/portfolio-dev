@@ -1,6 +1,6 @@
 import { defineField, defineType } from 'sanity';
 
-// TODO: it would be neat to have a conditional when the user picks the footer_type and is in the process of making the columns to showthem what needs to be created
+// TODO: it would be neat to have a conditional when the user picks the footer_type and is in the process of making the columns to show them what needs to be created
 
 export const footerType = defineType({
   name: 'footer',
