@@ -6,85 +6,8 @@ import TextWithIllustration from '@/components/section/TextWithIllustration';
 import Project from '@/components/section/Project';
 import Feature from '@/components/section/Feature';
 
-interface BaseSectionProp {
-  _key: string;
-  _id: string;
-}
+import { Section } from '@/sanity/lib/types';
 
-interface HeroSection extends BaseSectionProp {
-  _type: 'hero';
-  eyebrow: string;
-  heading: string;
-  content: string;
-  backgroundImage: string;
-  ShowTypewriter: boolean;
-  buttons: Array<{
-    text: string;
-    url: string;
-    style: string;
-    isExternal: boolean;
-    _key: string;
-  }>;
-}
-
-interface ProjectSection extends BaseSectionProp {
-  _type: 'projects';
-  _ref: string;
-  heading: string;
-  description: Array<string>;
-  buttons: Array<string>;
-}
-
-interface CallToActionSection extends BaseSectionProp {
-  _type: 'callToAction';
-  heading: string;
-  content: string;
-  buttons: Array<{
-    text: string;
-    url: string;
-    style: string;
-    isExternal: boolean;
-    _key: string;
-  }>;
-}
-
-interface textWithIllustrationSection extends BaseSectionProp {
-  _type: 'textWithIllustration';
-  eyebrow: string;
-  heading: string;
-  content: string;
-  image: { asset: { _ref: string }; alt: string };
-  buttons: Array<{
-    text: string;
-    url: string;
-    style: string;
-    isExternal: boolean;
-    _key: string;
-  }>;
-  image_alignment: 'left' | 'right';
-  text_alignment: 'center' | 'left' | 'right';
-}
-
-interface FeatureSection extends BaseSectionProp {
-  _type: 'feature';
-  eyebrow: string;
-  heading: string;
-  content: string;
-  featureItems: Array<{
-    eyebrow: string;
-    icon: string;
-    heading: string;
-    description: string;
-    featureImage: { asset: { _ref: string }; alt: string };
-  }>;
-}
-
-type Section =
-  | HeroSection
-  | ProjectSection
-  | CallToActionSection
-  | textWithIllustrationSection
-  | FeatureSection;
 export default async function PageBuilder() {
   const data = await sanityFetch({ query: PAGE_BUILDER_QUERY });
 

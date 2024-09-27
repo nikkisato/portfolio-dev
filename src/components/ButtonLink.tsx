@@ -1,16 +1,9 @@
 import classNames from 'classnames';
 import getIconComponent from '@/components/getIconComponent';
+import { ButtonsItemProp } from '@/sanity/lib/types';
 
 interface ButtonLinkProps {
-  buttons: Array<{
-    text: string;
-    url: string;
-    style: string;
-    isExternal: boolean;
-    _key: string;
-    icon?: string;
-    button_link_type: string;
-  }>;
+  buttons: ButtonsItemProp[];
   spacing: 'horizontal' | 'vertical';
   direction: 'row' | 'column';
   removePaddingLeft?: boolean;
@@ -45,7 +38,7 @@ export default function ButtonLink({
         return (
           <>
             {getIconComponent(button.icon)}
-            {button.text && <span>{button.text}</span>}
+            {button.text && <span className="ml-2">{button.text}</span>}
           </>
         );
       default:
@@ -70,7 +63,7 @@ export default function ButtonLink({
             <li key={button._key}>
               <a
                 href={button.url}
-                className={`${button.style} ${removePaddingLeft ? 'pl-0' : ''} ${paddingButton ? 'p-2' : '0'} border-b-2 border-transparent hover:border-black dark:hover:border-white`}
+                className={`flex items-center justify-center ${button.style} ${removePaddingLeft ? 'pl-0' : ''} ${paddingButton ? 'p-2' : '0'} border-b-2 border-transparent hover:border-black dark:hover:border-white`}
                 target={button.isExternal ? '_blank' : '_self'}
                 rel={button.isExternal ? 'noopener noreferrer' : undefined}
               >

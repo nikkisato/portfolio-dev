@@ -1,21 +1,12 @@
 import { urlFor } from '../sanity/lib/image';
 import Image from 'next/image';
+import { ImageComponentProp } from '@/sanity/lib/types';
 
-interface ImageProp {
-  image: {
-    asset: {
-      _ref: string;
-      _id?: string;
-      url?: string;
-      width?: number;
-      height?: number;
-    };
-  };
-  widthOverride?: number;
-  heightOverride?: number;
-}
-
-export default function ImageComponent({ image, widthOverride, heightOverride }: ImageProp) {
+export default function ImageComponent({
+  image,
+  widthOverride,
+  heightOverride,
+}: ImageComponentProp) {
   const { asset } = image;
 
   const width = widthOverride || asset.width || 800;

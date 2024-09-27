@@ -36,6 +36,25 @@ export const projectSection = defineType({
               type: 'string',
               description: 'Eyebrow for Project Card',
             }),
+
+            defineField({
+              name: 'project_type',
+              title: 'Project Type',
+              type: 'string',
+              options: {
+                list: [
+                  {
+                    title: 'Image on Left, Content on Right ',
+                    value: 'image_on_left_content_on_right',
+                  },
+                  {
+                    title: 'Image on Right, Content on Left ',
+                    value: 'image_on_right_content_on_left',
+                  },
+                ],
+                layout: 'radio',
+              },
+            }),
             defineField({
               name: 'heading',
               title: 'Heading',

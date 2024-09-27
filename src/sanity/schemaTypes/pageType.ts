@@ -55,8 +55,7 @@ export const pageType = defineType({
         defineArrayMember({
           name: 'callToAction',
           title: 'Call To Action Section',
-          type: 'reference',
-          to: [{ type: 'callToAction' }],
+          type: 'callToAction',
         }),
         defineArrayMember({
           name: 'projects',

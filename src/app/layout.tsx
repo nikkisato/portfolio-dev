@@ -5,14 +5,14 @@ import './globals.css';
 import { VisualEditing } from 'next-sanity';
 import { draftMode } from 'next/headers';
 
-const geistSans = localFont({
-  src: './fonts/GeistVF.woff',
-  variable: '--font-geist-sans',
+const Inter = localFont({
+  src: './fonts/Inter-VariableFont_opsz,wght.ttf',
+  variable: '--font-inter',
   weight: '100 900',
 });
-const geistMono = localFont({
-  src: './fonts/GeistMonoVF.woff',
-  variable: '--font-geist-mono',
+const InterItalic = localFont({
+  src: './fonts/Inter-Italic-VariableFont_opsz,wght.ttf',
+  variable: '--font-inter-italic',
   weight: '100 900',
 });
 
@@ -28,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${Inter.variable} ${InterItalic.variable} antialiased`}>
         {draftMode().isEnabled && <a href="/api/draft-mode/disable">Disable preview mode</a>}
         {children}
         {draftMode().isEnabled && <VisualEditing />}

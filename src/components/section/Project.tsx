@@ -1,38 +1,28 @@
-import { sanityFetch } from '@/sanity/lib/client';
 import ProjectItem from '@/components/ProjectItem';
-import { PROJECT_QUERY } from '@/sanity/lib/queries';
+import {
+  ButtonsItemProp,
+  ProjectImageProp,
+  DescriptionContentItemProp,
+  ProjectItemsProp,
+} from '@/sanity/lib/types';
 
-interface ProjectProps {
+interface ProjectDataProp {
   data: {
-    _ref: string;
+    title: string;
+    eyebrow: string;
+    description?: DescriptionContentItemProp[];
+    projectItems: ProjectItemsProp[];
+    buttons?: ButtonsItemProp[];
+    projectImage: ProjectImageProp[];
   };
 }
 
-interface ProjectDataProp {
-  heading: string;
-  description: {
-    _key: string;
-    style: string;
-    listItem?: string | undefined;
-    children: { text: string; marks?: string[] | undefined }[];
-  }[];
-  buttons: Array<{
-    text: string;
-    url: string;
-    style: string;
-    isExternal: boolean;
-    _key: string;
-  }>;
-}
-
-export default async function Project({}: ProjectProps) {
-  const data = await sanityFetch({ query: PROJECT_QUERY });
-  if (!data) return null;
-
+export default function Project({ data }: ProjectDataProp) {
+  const { projectItems, title } = data;
   return (
-    <div>
-      <h2>Projects</h2>
-      {data.map((item: ProjectDataProp, index: number) => {
+    <div className="flex flex-col justify-center items-center">
+      {title && <h2 className="font-bold text-4xl">{title}</h2>}
+      {projectItems.map((item, index: number) => {
         return (
           <ProjectItem
             key={index}

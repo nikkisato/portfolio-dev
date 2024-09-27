@@ -2,6 +2,7 @@
 
 import TypewriterComponent from '@/components/Typewriter';
 import ButtonLink from '@/components/ButtonLink';
+import { ButtonsItemProp } from '@/sanity/lib/types';
 
 interface HeroProps {
   data: {
@@ -10,13 +11,7 @@ interface HeroProps {
     content: string;
     backgroundImage: string;
     ShowTypewriter: boolean;
-    buttons: Array<{
-      text: string;
-      url: string;
-      style: string;
-      isExternal: boolean;
-      _key: string;
-    }>;
+    buttons: ButtonsItemProp[];
   };
 }
 
