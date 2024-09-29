@@ -11,6 +11,11 @@ export const callToActionType = defineType({
       title: 'Eyebrow',
     }),
     defineField({
+      name: 'section_id',
+      type: 'string',
+      title: 'Section ID',
+    }),
+    defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',

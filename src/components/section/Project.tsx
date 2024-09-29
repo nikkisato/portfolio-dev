@@ -9,6 +9,7 @@ import {
 interface ProjectDataProp {
   data: {
     title: string;
+    section_id?: string;
     eyebrow: string;
     description?: DescriptionContentItemProp[];
     projectItems?: ProjectItemsProp[];
@@ -18,9 +19,12 @@ interface ProjectDataProp {
 }
 
 export default function Project({ data }: ProjectDataProp) {
-  const { projectItems, title } = data;
+  const { projectItems, title, section_id } = data;
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div
+      id={section_id}
+      className="flex flex-col justify-center items-center"
+    >
       {title && <h2 className="font-bold text-4xl">{title}</h2>}
       {projectItems &&
         projectItems.map((item, index: number) => {

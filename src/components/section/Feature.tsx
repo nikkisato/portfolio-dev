@@ -11,6 +11,7 @@ interface FeatureProps {
     title: string;
     image?: ImageProp;
     content?: DescriptionContentItemProp[];
+    section_id?: string;
     featureItems?: {
       heading?: string;
       icon?: string;
@@ -23,7 +24,7 @@ interface FeatureProps {
 }
 
 export default function Feature({ data }: FeatureProps) {
-  const { eyebrow, content, title, feature_type, featureItems, image } = data;
+  const { eyebrow, content, title, feature_type, featureItems, image, section_id } = data;
 
   // Simple - getIconComponent("small")
   const renderFeatureItems = (iconSize: 'small' | 'large') => {
@@ -435,7 +436,12 @@ export default function Feature({ data }: FeatureProps) {
 
   return (
     <section className="p-4">
-      <div className="container mx-auto">{renderFeatureContent()}</div>
+      <div
+        id={section_id}
+        className="container mx-auto"
+      >
+        {renderFeatureContent()}
+      </div>
     </section>
   );
 }

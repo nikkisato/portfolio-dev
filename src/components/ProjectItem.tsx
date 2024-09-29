@@ -24,7 +24,7 @@ export default function ProjectItem({ data }: ProjectItemProp) {
           <div className="grid lg:grid-cols-2 gap-16 py-20">
             <div className="flex flex-col lg:order-2 space-y-4 md:space-y-5 max-w-xl">
               {eyebrow && <span>{eyebrow}</span>}
-              {heading && <h2 className="font-bold text-4xl">{heading}</h2>}
+              {heading && <h3 className="font-bold text-4xl">{heading}</h3>}
 
               {description && <BlockContent data={description} />}
               {buttons && (
@@ -48,7 +48,7 @@ export default function ProjectItem({ data }: ProjectItemProp) {
           <div className="grid lg:grid-cols-2 gap-16 py-20">
             <div className="flex flex-col space-y-2 md:space-y-5 max-w-xl">
               {eyebrow && <span>{eyebrow}</span>}
-              {heading && <h2 className="font-bold text-4xl">{heading}</h2>}
+              {heading && <h3 className="font-bold text-4xl">{heading}</h3>}
 
               {description && <BlockContent data={description} />}
             </div>

@@ -16,6 +16,11 @@ export const projectSection = defineType({
       title: 'Title',
     }),
     defineField({
+      name: 'section_id',
+      type: 'string',
+      title: 'Section ID',
+    }),
+    defineField({
       name: 'content',
       type: 'blockContent',
       title: 'Content',

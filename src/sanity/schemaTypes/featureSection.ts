@@ -11,6 +11,11 @@ export const featureSection = defineType({
       title: 'Title',
     }),
     defineField({
+      name: 'section_id',
+      type: 'string',
+      title: 'Section ID',
+    }),
+    defineField({
       name: 'feature_type',
       title: 'Feature Type',
       type: 'string',

@@ -8,10 +8,11 @@ interface CallToActionProps {
     heading: string;
     content?: DescriptionContentItemProp[];
     buttons: ButtonsItemProp[];
+    section_id?: string;
   };
 }
 export default function CallToAction({ data }: CallToActionProps) {
-  const { heading, content, buttons } = data;
+  const { heading, content, buttons, section_id } = data;
 
   return (
     <div className="flex flex-col justify-center items-center space-y-10 py-20">
