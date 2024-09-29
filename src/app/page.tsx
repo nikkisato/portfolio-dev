@@ -1,5 +1,6 @@
 import PageBuilder from '@/components/PageBuilder';
-import Header from '@/components/Header';
+import Header from '@/components/section/Header';
+import Footer from '@/components/section/Footer';
 
 export default async function Page() {
   return (
@@ -7,6 +8,7 @@ export default async function Page() {
       <div className="bg-white dark:bg-black">
         <Header />
         <PageBuilder />
+        <Footer />
       </div>
     </>
   );

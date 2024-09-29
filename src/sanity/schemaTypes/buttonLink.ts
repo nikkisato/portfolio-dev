@@ -17,6 +17,38 @@ export const buttonLink = defineType({
           .error('Button/Link text is required and should be between 1 and 100 characters'),
     }),
     defineField({
+      name: 'icon',
+      title: 'Icon',
+      type: 'string',
+      description: 'Select an icon for this feature',
+      options: {
+        list: [
+          { title: 'Facebook', value: 'Facebook' },
+          { title: 'Github', value: 'GitHub' },
+          { title: 'X', value: 'X' },
+          { title: 'Youtube', value: 'YouTube' },
+          { title: 'Instagram', value: 'InstagramCircle' },
+          { title: 'Email', value: 'Email' },
+          { title: 'Linkedin', value: 'Linkedin' },
+        ],
+      },
+    }),
+    defineField({
+      name: 'button_link_type',
+      title: 'Button Link Type',
+      type: 'string',
+      validation: (Rule) => Rule.required().error('Button Link Type is required.'),
+      options: {
+        list: [
+          { title: 'Icon Only', value: 'icon_only' },
+          { title: 'Text Only No Icon', value: 'text_only_no_icons' },
+          { title: 'Icon and Text', value: 'icon_and_text' },
+        ],
+        layout: 'radio',
+      },
+    }),
+
+    defineField({
       name: 'url',
       title: 'URL',
       type: 'url',
@@ -48,6 +80,17 @@ export const buttonLink = defineType({
         ],
       },
       description: 'Select the style of the button/link',
+    }),
+    defineField({
+      name: 'ariaLabel',
+      title: 'Aria Label Text',
+      type: 'string',
+      description: 'The text that will be used for Aria Label',
+      validation: (Rule) =>
+        Rule.required()
+          .min(1)
+          .max(100)
+          .error('Button/Link text is required and should be between 1 and 100 characters'),
     }),
   ],
 });

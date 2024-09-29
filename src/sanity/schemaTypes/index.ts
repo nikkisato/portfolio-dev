@@ -9,9 +9,12 @@ import { videoType } from './videoType';
 import { headerType } from './headerType';
 import { buttonLink } from './buttonLink';
 import { footerType } from './footerType';
-import { projectsType } from './projectsType';
-import { projectItemType } from './projectItemType';
+import { projectSection } from './projectSection';
+
 import { blockContent } from './blockContent';
+import { featureSection } from './featureSection';
+import { newsletterType } from './newsletter';
+import { missionStatementType } from './missionStatement';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -25,8 +28,10 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     buttonLink,
     headerType,
     footerType,
-    projectsType,
-    projectItemType,
+    projectSection,
     blockContent,
+    featureSection,
+    newsletterType,
+    missionStatementType,
   ],
 };

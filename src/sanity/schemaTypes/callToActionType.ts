@@ -2,15 +2,25 @@ import { defineField, defineType } from 'sanity';
 
 export const callToActionType = defineType({
   name: 'callToAction',
-  type: 'document',
+  type: 'object',
   title: 'Call To Action',
   fields: [
+    defineField({
+      name: 'eyebrow',
+      type: 'string',
+      title: 'Eyebrow',
+    }),
     defineField({
       name: 'heading',
       title: 'Heading',
       type: 'string',
       description: 'Main heading for the Call To Action section',
       validation: (Rule) => Rule.required().min(5).max(60),
+    }),
+    defineField({
+      name: 'content',
+      type: 'blockContent',
+      title: 'Content',
     }),
     defineField({
       name: 'buttons',

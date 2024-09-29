@@ -17,7 +17,8 @@ export const textWithIllustrationType = defineType({
     }),
     defineField({
       name: 'content',
-      type: 'text',
+      type: 'blockContent',
+      title: 'Content',
     }),
     defineField({
       name: 'text_alignment',

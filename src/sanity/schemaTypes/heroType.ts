@@ -20,7 +20,7 @@ export const heroType = defineType({
     defineField({
       name: 'content',
       title: 'Content',
-      type: 'string',
+      type: 'blockContent',
       description: 'Content for the hero section',
     }),
     defineField({

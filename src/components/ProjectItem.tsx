@@ -1,101 +1,76 @@
+import BlockContent from '@/components/BlockContent';
+import ButtonLink from '@/components/ButtonLink';
+import ImageComponent from '@/components/ImageComponent';
+import { ButtonsItemProp, DescriptionContentItemProp, ImageProp } from '@/sanity/lib/types';
+
 interface ProjectItemProp {
   data: {
     heading: string;
-    description: Array<{
-      _key: string;
-      style: string;
-      listItem?: string;
-      children: Array<{
-        text: string;
-        marks?: Array<string>;
-      }>;
-    }>;
-    buttons: Array<{
-      text: string;
-      url: string;
-      style: string;
-      isExternal: boolean;
-      _key: string;
-    }>;
+    eyebrow: string;
+    project_type: string;
+    description?: DescriptionContentItemProp[];
+    buttons?: ButtonsItemProp[];
+    image?: ImageProp;
   };
 }
 
 export default function ProjectItem({ data }: ProjectItemProp) {
-  const { heading, description, buttons } = data;
-  return (
-    <div>
-      <h2>{heading}</h2>
-      <div>
-        {description &&
-          description.map((desc, index) => {
-            const childText = desc.children[0].text;
-            const childMark = desc.children[0].marks?.[0];
+  const { eyebrow, heading, description, buttons, image, project_type } = data;
 
-            // Handling text formatting (strong, emphasis)
-            if (childMark) {
-              switch (childMark) {
-                case 'strong':
-                  return <strong key={index}>{childText}</strong>;
-                case 'em':
-                  return <em key={index}>{childText}</em>;
-                case 'underline':
-                  return <u key={index}>{childText}</u>;
-                case 'strike-through':
-                  return <s key={index}>{childText}</s>;
-                default:
-                  return <span key={index}>{childText}</span>;
-              }
-            }
+  const renderItem = () => {
+    switch (project_type) {
+      case 'image_on_left_content_on_right':
+        return (
+          <div className="grid lg:grid-cols-2 gap-16 py-20">
+            <div className="flex flex-col lg:order-2 space-y-4 md:space-y-5 max-w-xl">
+              {eyebrow && <span>{eyebrow}</span>}
+              {heading && <h2 className="font-bold text-4xl">{heading}</h2>}
 
-            // Handling list items
-            if (desc.listItem === 'bullet') {
-              return (
-                <ul key={index}>
-                  {desc.children.map((child, idx) => (
-                    <li key={idx}>{child.text}</li>
-                  ))}
-                </ul>
-              );
-            }
+              {description && <BlockContent data={description} />}
+              {buttons && (
+                <ButtonLink
+                  buttons={buttons}
+                  direction="row"
+                  spacing="horizontal"
+                />
+              )}
+            </div>
 
-            // Handling different styles (headings, paragraphs)
-            switch (desc.style) {
-              case 'h1':
-                return <h1 key={index}>{childText}</h1>;
-              case 'h2':
-                return <h2 key={index}>{childText}</h2>;
-              case 'h3':
-                return <h3 key={index}>{childText}</h3>;
-              case 'h4':
-                return <h4 key={index}>{childText}</h4>;
-              case 'h5':
-                return <h5 key={index}>{childText}</h5>;
-              case 'h6':
-                return <h6 key={index}>{childText}</h6>;
-              case 'normal':
-                return <p key={index}>{childText}</p>;
-              default:
-                return <p key={index}>{childText}</p>;
-            }
-          })}
-      </div>
-      <div>
-        <ul className="flex">
-          {buttons &&
-            buttons.map((button) => (
-              <li key={button._key}>
-                <a
-                  href={button.url}
-                  className={`${button.style} p-2`}
-                  target={button.isExternal ? '_blank' : '_self'}
-                  rel={button.isExternal ? 'noopener noreferrer' : undefined}
-                >
-                  {button.text}
-                </a>
-              </li>
-            ))}
-        </ul>
-      </div>
-    </div>
-  );
+            {image && (
+              <div className="lg:order-1">
+                <ImageComponent image={image} />
+              </div>
+            )}
+          </div>
+        );
+      case 'image_on_right_content_on_left':
+        return (
+          <div className="grid lg:grid-cols-2 gap-16 py-20">
+            <div className="flex flex-col space-y-2 md:space-y-5 max-w-xl">
+              {eyebrow && <span>{eyebrow}</span>}
+              {heading && <h2 className="font-bold text-4xl">{heading}</h2>}
+
+              {description && <BlockContent data={description} />}
+            </div>
+            {image && (
+              <div>
+                <ImageComponent image={image} />
+              </div>
+            )}
+            {buttons && (
+              <ButtonLink
+                buttons={buttons}
+                direction="row"
+                spacing="horizontal"
+              />
+            )}
+          </div>
+        );
+
+      default:
+        return <div>Default Project Item content</div>;
+    }
+  };
+
+  return <>{renderItem()}</>;
 }

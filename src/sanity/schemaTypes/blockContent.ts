@@ -44,5 +44,35 @@ export const blockContent = defineType({
         ],
       },
     }),
+    // Adding description list type
+    defineArrayMember({
+      type: 'object',
+      name: 'descriptionList',
+      title: 'Description List',
+      fields: [
+        {
+          title: 'Terms',
+          name: 'terms',
+          type: 'array',
+          of: [
+            {
+              type: 'object',
+              fields: [
+                {
+                  title: 'Term',
+                  name: 'term',
+                  type: 'string',
+                },
+                {
+                  title: 'Description',
+                  name: 'description',
+                  type: 'text',
+                },
+              ],
+            },
+          ],
+        },
+      ],
+    }),
   ],
 });
