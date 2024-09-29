@@ -15,7 +15,10 @@ export default function CallToAction({ data }: CallToActionProps) {
   const { heading, content, buttons, section_id } = data;
 
   return (
-    <div className="flex flex-col justify-center items-center space-y-10 py-20">
+    <div
+      id={section_id}
+      className="flex flex-col justify-center items-center space-y-10 py-20"
+    >
       {heading && <h2 className="font-bold text-4xl">{heading}</h2>}
       {content && (
         <div>
