@@ -27,70 +27,25 @@ export interface DescriptionContentItemProp {
   }>;
 }
 
-export interface ProjectItemsProp {
-  projectItems: Array<{
-    eyebrow: string;
-    heading: string;
-    project_type: string;
-    projectImage: {
-      asset: {
-        _ref: string;
-      };
-      alt: string;
-    };
-    description: Array<{
-      _key: string;
-      style: string;
-      listItem?: string;
-      children: Array<{
-        text: string;
-        marks?: Array<string>;
-      }>;
-    }>;
-  }>;
-}
-
-export interface ImageComponentProp {
-  image: {
-    asset: {
-      _ref: string;
-      _id?: string;
-      url?: string;
-      width?: number;
-      height?: number;
-    };
-  };
-  widthOverride?: number;
-  heightOverride?: number;
-}
-
-export interface ProjectImageProp {
-  projectImage: {
-    asset: {
-      _ref: string;
-    };
-  };
+export interface Asset {
+  _ref: string;
+  _id?: string;
+  _type?: string;
+  url?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface ImageProp {
-  image: {
-    asset: {
-      _ref: string;
-    };
-    alt: string;
-  };
+  asset?: Asset;
+  _type?: string;
+  alt?: string;
 }
 
-export interface FeatureItemProp {
-  featureItems: Array<{
-    heading: string;
-    icon?: string;
-    description: DescriptionContentItemProp[];
-    featureImage: ImageProp[];
-    buttons: ButtonsItemProp[];
-    image: ImageProp[];
-    _key: string;
-  }>;
+export interface ImageComponentProps {
+  image: ImageProp;
+  widthOverride?: number;
+  heightOverride?: number;
 }
 
 export interface HeroSection extends BaseSectionProp {
@@ -103,6 +58,14 @@ export interface HeroSection extends BaseSectionProp {
   buttons: ButtonsItemProp[];
 }
 
+export interface ProjectItemsProp {
+  eyebrow: string;
+  heading: string;
+  project_type: string;
+  image?: ImageProp;
+  description: DescriptionContentItemProp[];
+}
+
 export interface ProjectSection extends BaseSectionProp {
   _type: 'projects';
   _ref: string;
@@ -111,7 +74,7 @@ export interface ProjectSection extends BaseSectionProp {
   description?: DescriptionContentItemProp[];
   projectItems: ProjectItemsProp[];
   buttons?: ButtonsItemProp[];
-  projectImage: ProjectImageProp[];
+  image: ImageProp;
 }
 
 export interface CallToActionSection extends BaseSectionProp {
@@ -127,10 +90,21 @@ export interface textWithIllustrationSection extends BaseSectionProp {
   eyebrow: string;
   heading: string;
   content: string;
-  image: ImageProp[];
+  image: ImageProp;
   buttons: ButtonsItemProp[];
   image_alignment: 'left' | 'right';
   text_alignment: 'center' | 'left' | 'right';
+}
+
+export interface FeatureItemProp {
+  // featureItems: Array<{
+  heading?: string;
+  icon?: string;
+  description?: DescriptionContentItemProp[];
+  image?: ImageProp;
+  buttons?: ButtonsItemProp[];
+  _key?: string;
+  // }>;
 }
 
 export interface FeatureSection extends BaseSectionProp {
@@ -139,9 +113,9 @@ export interface FeatureSection extends BaseSectionProp {
   _key: string;
   eyebrow: string;
   title: string;
-  image: ImageProp[];
-  content: DescriptionContentItemProp[];
-  featureItems: FeatureItemProp[];
+  image?: ImageProp;
+  content?: DescriptionContentItemProp[];
+  featureItems?: FeatureItemProp[];
 }
 
 export type Section =

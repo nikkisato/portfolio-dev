@@ -12,10 +12,10 @@ export const headerType = defineType({
       description: 'Main heading for the Nav section',
     }),
     defineField({
-      name: 'logo',
-      title: 'Logo Image',
+      name: 'image',
+      title: 'Image',
       type: 'image',
-      description: 'Logo image for the Nav section',
+      description: 'image for the Nav section',
     }),
     defineField({
       name: 'buttons',

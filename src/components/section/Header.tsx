@@ -22,12 +22,12 @@ export default async function Header() {
           />
         </nav>
       </div>
-      {/* Logo */}
+
       <div>
         <h1 className="sr-only">{heading}</h1>
-        {/* {logo && (
+        {/* {image && (
           <ImageComponent
-            image={logo}
+            image={image}
             widthOverride={100}
             heightOverride={100}
           />

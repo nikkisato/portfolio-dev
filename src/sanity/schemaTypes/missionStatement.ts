@@ -6,8 +6,8 @@ export const missionStatementType = defineType({
   type: 'object',
   fields: [
     defineField({
-      name: 'logo',
-      title: 'Logo Image',
+      name: 'image',
+      title: 'Image',
       type: 'image',
       description: 'Logo image for the Mission Statement section',
     }),

@@ -116,8 +116,8 @@ export const featureSection = defineType({
               description: 'Brief description of the feature',
             }),
             defineField({
-              name: 'featureImage',
-              title: 'Feature Image',
+              name: 'image',
+              title: 'Image',
               type: 'image',
               description: 'Feature image for the Feature section',
             }),

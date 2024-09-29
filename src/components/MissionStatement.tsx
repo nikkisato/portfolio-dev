@@ -1,39 +1,25 @@
 import ButtonLink from '@/components/ButtonLink';
 import ImageComponent from '@/components/ImageComponent';
+import { ButtonsItemProp, DescriptionContentItemProp, ImageProp } from '@/sanity/lib/types';
 
 interface MissionStatementProps {
   missionStatement: {
     heading: string;
-    content: {
-      _key: string;
-      style: string;
-      listItem?: string | undefined;
-      children: { text: string; marks?: string[] | undefined }[];
-    }[];
-    buttons: Array<{
-      text: string;
-      url: string;
-      style: string;
-      isExternal: boolean;
-      _key: string;
-    }>;
-    logo: {
-      asset: {
-        _ref: string;
-      };
-      alt: string;
-    };
+    content: DescriptionContentItemProp[];
+    buttons: ButtonsItemProp[];
+    image: ImageProp;
   };
 }
 
 export default function MissionStatement({ missionStatement }: MissionStatementProps) {
-  const { heading, content, buttons, logo } = missionStatement;
+  const { heading, content, buttons, image } = missionStatement;
+
   return (
     <div className="container space-y-4">
       <h3 className="font-bold sr-only">{heading}</h3>
-      {logo && (
+      {image && (
         <ImageComponent
-          image={logo}
+          image={image}
           widthOverride={100}
           heightOverride={100}
         />

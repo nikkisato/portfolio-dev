@@ -9,183 +9,171 @@ interface FeatureProps {
     _key: string;
     eyebrow: string;
     title: string;
-    image: {
-      asset: {
-        _ref: string;
-      };
-      alt: string;
-    };
-    content: DescriptionContentItemProp[];
-    featureItems: Array<{
-      heading: string;
+    image?: ImageProp;
+    content?: DescriptionContentItemProp[];
+    featureItems?: {
+      heading?: string;
       icon?: string;
-      description: DescriptionContentItemProp[];
-      featureImage: {
-        asset: {
-          _ref: string;
-        };
-        alt: string;
-      };
-      buttons: ButtonsItemProp[];
-      image: ImageProp[];
-      _key: string;
-    }>;
+      description?: DescriptionContentItemProp[];
+      buttons?: ButtonsItemProp[];
+      image?: ImageProp;
+      _key?: string;
+    }[];
   };
 }
+
 export default function Feature({ data }: FeatureProps) {
   const { eyebrow, content, title, feature_type, featureItems, image } = data;
 
   // Simple - getIconComponent("small")
-  const renderFeatureItems = (iconSize: 'small' | 'large') =>
-    featureItems.map((item) => {
-      return (
-        <div
-          key={item._key}
-          className="flex flex-col space-y-3"
-        >
-          <div className={`flex ${iconSize === 'large' ? 'flex-col' : 'flex-row'}`}>
-            {item.icon && iconSize === 'small' && getIconComponent(item.icon, iconSize)}
-
-            {item.heading && (
-              <h3
-                className={`font-bold ${item.icon && iconSize === 'small' && item.heading ? 'ml-2' : ''} ${item.icon && iconSize === 'large' ? 'pt-2' : ''} `}
-              >
-                {item.heading}
-              </h3>
+  const renderFeatureItems = (iconSize: 'small' | 'large') => {
+    return featureItems ? (
+      <>
+        {featureItems.map((item) => (
+          <div
+            key={item._key}
+            className="flex flex-col space-y-3"
+          >
+            <div className={`flex ${iconSize === 'large' ? 'flex-col' : 'flex-row'}`}>
+              {item.icon && iconSize === 'small' && getIconComponent(item.icon, iconSize)}
+              {item.heading && (
+                <h3
+                  className={`font-bold ${
+                    item.icon && iconSize === 'small' && item.heading ? 'ml-2' : ''
+                  } ${item.icon && iconSize === 'large' ? 'pt-2' : ''}`}
+                >
+                  {item.heading}
+                </h3>
+              )}
+            </div>
+            {item.description && <BlockContent data={item.description} />}
+            {item.buttons && (
+              <ButtonLink
+                buttons={item.buttons}
+                spacing="vertical"
+                direction="column"
+                removePaddingLeft={true}
+              />
             )}
           </div>
-          {item.description && <BlockContent data={item.description} />}
-          {item.buttons && (
-            <ButtonLink
-              buttons={item.buttons}
-              spacing="vertical"
-              direction="column"
-              removePaddingLeft={true}
-            />
-          )}
-        </div>
-      );
-    });
+        ))}
+      </>
+    ) : null; // Return null if featureItems is undefined or falsey
+  };
   // TODO add the ability to have heading and content be on the same line and flow for inline elements
   const renderOffsetFeatureItems = (
     iconSize: 'small' | 'large',
     iconPosition: 'offset' | 'inline' | 'above',
     contentPosition: 'inline' | 'block'
-  ) =>
-    featureItems.map((item) => {
-      return (
-        <div
-          key={item._key}
-          className="flex flex-col space-y-3"
-        >
-          <div className={`flex ${iconSize === 'large' ? 'flex-col space-y-5' : 'flex-row'}`}>
-            {/* Large Icon Above Block Heading and Content   */}
-            {item.icon &&
-              iconSize == 'large' &&
-              iconPosition == 'above' &&
-              item.heading &&
-              item.description &&
-              contentPosition === 'block' && (
-                <>
-                  {getIconComponent(item.icon, iconSize)}
-                  <div className="flex flex-col space-y-3">
-                    <h3 className={`font-bold `}>{item.heading}</h3>
-
-                    <BlockContent data={item.description} />
-
-                    {item.buttons && (
-                      <ButtonLink
-                        buttons={item.buttons}
-                        spacing="vertical"
-                        direction="column"
-                        removePaddingLeft={true}
-                      />
-                    )}
-                  </div>
-                </>
-              )}
-
-            {/* centered 2x2  - getIconComponent("large", "offset", "block" ) */}
-            {/* Large Icon Offset Block Heading and Content   */}
-            {item.icon &&
-              iconSize == 'large' &&
-              iconPosition == 'offset' &&
-              item.heading &&
-              item.description &&
-              contentPosition === 'block' && (
-                <>
-                  <div className="flex flex-row space-y-2">
+  ) => {
+    return featureItems ? (
+      <>
+        {featureItems.map((item) => (
+          <div
+            key={item._key}
+            className="flex flex-col space-y-3"
+          >
+            <div className={`flex ${iconSize === 'large' ? 'flex-col space-y-5' : 'flex-row'}`}>
+              {/* Large Icon Above Block Heading and Content */}
+              {item.icon &&
+                iconSize === 'large' &&
+                iconPosition === 'above' &&
+                item.heading &&
+                item.description &&
+                contentPosition === 'block' && (
+                  <>
                     {getIconComponent(item.icon, iconSize)}
-                    <h3 className={`font-bold ${iconPosition === 'offset' ? 'ml-2' : ''} `}>
-                      {item.heading}
-                    </h3>
-                  </div>
-                  <BlockContent
-                    className="ml-11"
-                    data={item.description}
-                  />
-                  {item.buttons && (
-                    <ButtonLink
-                      className="ml-11"
-                      buttons={item.buttons}
-                      spacing="vertical"
-                      direction="column"
-                      removePaddingLeft={true}
-                    />
-                  )}
-                </>
-              )}
-            {/* Simple two columns with Small Icons - getIconComponent("small", "offset", "block" ) */}
-            {/* Small Icon Offset Block Heading and Content   */}
-            {item.icon &&
-              iconSize == 'small' &&
-              iconPosition == 'offset' &&
-              item.heading &&
-              item.description &&
-              contentPosition === 'block' && (
-                <>
-                  {getIconComponent(item.icon, iconSize)}
-                  <div className="flex flex-col space-y-2">
-                    <h3 className={`font-bold ${iconPosition === 'offset' ? 'ml-2' : ''} `}>
-                      {item.heading}
-                    </h3>
+                    <div className="flex flex-col space-y-3">
+                      <h3 className={`font-bold`}>{item.heading}</h3>
+                      <BlockContent data={item.description} />
+                      {item.buttons && (
+                        <ButtonLink
+                          buttons={item.buttons}
+                          spacing="vertical"
+                          direction="column"
+                          removePaddingLeft={true}
+                        />
+                      )}
+                    </div>
+                  </>
+                )}
 
+              {/* Large Icon Offset Block Heading and Content */}
+              {item.icon &&
+                iconSize === 'large' &&
+                iconPosition === 'offset' &&
+                item.heading &&
+                item.description &&
+                contentPosition === 'block' && (
+                  <>
+                    <div className="flex flex-row space-y-2">
+                      {getIconComponent(item.icon, iconSize)}
+                      <h3 className={`font-bold ${iconPosition === 'offset' ? 'ml-2' : ''}`}>
+                        {item.heading}
+                      </h3>
+                    </div>
                     <BlockContent
-                      className="ml-2"
+                      className="ml-11"
                       data={item.description}
                     />
-
                     {item.buttons && (
                       <ButtonLink
-                        className="ml-2"
+                        className="ml-11"
                         buttons={item.buttons}
                         spacing="vertical"
                         direction="column"
                         removePaddingLeft={true}
                       />
                     )}
-                  </div>
-                </>
-              )}
-            {/* // TODO add the ability to have heading and content be on the same line and flow */}
-            {/* Small Icon Offset Inline Heading and Content   */}
-            {item.icon &&
-              iconSize == 'small' &&
-              iconPosition === 'offset' &&
-              item.heading &&
-              item.description &&
-              contentPosition === 'inline' && (
-                <>
-                  please choose another option
-                  {/* {getIconComponent(item.icon, iconSize)}
-                  <div className="text-wrap">
-                    <h3 className="whitespace-nowrap">{item.heading}</h3>
+                  </>
+                )}
 
-                    <div className="flex-1">
+              {/* Small Icon Offset Block Heading and Content */}
+              {item.icon &&
+                iconSize === 'small' &&
+                iconPosition === 'offset' &&
+                item.heading &&
+                item.description &&
+                contentPosition === 'block' && (
+                  <>
+                    {getIconComponent(item.icon, iconSize)}
+                    <div className="flex flex-col space-y-2">
+                      <h3 className={`font-bold ${iconPosition === 'offset' ? 'ml-2' : ''}`}>
+                        {item.heading}
+                      </h3>
                       <BlockContent
-                        className="inline"
+                        className="ml-2"
                         data={item.description}
                       />
+                      {item.buttons && (
+                        <ButtonLink
+                          className="ml-2"
+                          buttons={item.buttons}
+                          spacing="vertical"
+                          direction="column"
+                          removePaddingLeft={true}
+                        />
+                      )}
+                    </div>
+                  </>
+                )}
+
+              {/* Small Icon Offset Inline Heading and Content */}
+              {item.icon &&
+                iconSize === 'small' &&
+                iconPosition === 'offset' &&
+                item.heading &&
+                item.description &&
+                contentPosition === 'inline' && (
+                  <>
+                    {/* Example placeholder for inline */}
+                    please choose another option
+                    {/* Uncomment and adjust as needed for inline display
+                  {getIconComponent(item.icon, iconSize)}
+                  <div className="text-wrap">
+                    <h3 className="whitespace-nowrap">{item.heading}</h3>
+                    <div className="flex-1">
+                      <BlockContent className="inline" data={item.description} />
                     </div>
                   </div>
                   {item.buttons && (
@@ -196,13 +184,16 @@ export default function Feature({ data }: FeatureProps) {
                       direction="column"
                       removePaddingLeft={true}
                     />
-                  )} */}
-                </>
-              )}
+                  )}
+                  */}
+                  </>
+                )}
+            </div>
           </div>
-        </div>
-      );
-    });
+        ))}
+      </>
+    ) : null; // Return null if featureItems is undefined
+  };
 
   const getRandomRotateClass = () => {
     const rotateClasses = [
@@ -217,53 +208,58 @@ export default function Feature({ data }: FeatureProps) {
     return rotateClasses[Math.floor(Math.random() * rotateClasses.length)];
   };
 
-  const renderFeatureCardItems = (iconSize: 'small' | 'large') =>
-    featureItems.map((item) => {
-      const randomRotateClass = getRandomRotateClass();
+  const renderFeatureCardItems = (iconSize: 'small' | 'large') => {
+    return featureItems ? (
+      <>
+        {featureItems.map((item) => {
+          const randomRotateClass = getRandomRotateClass();
 
-      return (
-        <div
-          key={item._key}
-          className={`flex flex-col border-2 border-black ${randomRotateClass}`}
-        >
-          <div className="border-8 mt-4 border-white flex justify-center items-center">
-            {item.featureImage && (
-              <ImageComponent
-                image={item.featureImage}
-                widthOverride={300}
-                heightOverride={300}
-              />
-            )}
-          </div>
-          <div className="p-8 bg-white text-black space-y-2">
+          return (
             <div
-              className={`flex flex-row justify-center items-center  ${iconSize === 'large' ? 'flex-col' : 'flex-row'}`}
+              key={item._key}
+              className={`flex flex-col border-2 border-black ${randomRotateClass}`}
             >
-              {item.icon && iconSize === 'small' && getIconComponent(item.icon, iconSize)}
-
-              {item.heading && (
-                <h3
-                  className={`font-bold ${item.icon && iconSize === 'small' && item.heading ? 'ml-2' : ''} ${item.icon && iconSize === 'large' ? 'pt-2' : ''} `}
+              <div className="border-8 mt-4 border-white flex justify-center items-center">
+                {item.image && (
+                  <ImageComponent
+                    image={item.image}
+                    widthOverride={300}
+                    heightOverride={300}
+                  />
+                )}
+              </div>
+              <div className="p-8 bg-white text-black space-y-2">
+                <div
+                  className={`flex flex-row justify-center items-center ${iconSize === 'large' ? 'flex-col' : 'flex-row'}`}
                 >
-                  {item.heading}
-                </h3>
-              )}
+                  {item.icon && iconSize === 'small' && getIconComponent(item.icon, iconSize)}
+
+                  {item.heading && (
+                    <h3
+                      className={`font-bold ${item.icon && iconSize === 'small' && item.heading ? 'ml-2' : ''} ${item.icon && iconSize === 'large' ? 'pt-2' : ''}`}
+                    >
+                      {item.heading}
+                    </h3>
+                  )}
+                </div>
+                <div className="flex flex-col justify-center items-center">
+                  {item.description && <BlockContent data={item.description} />}
+                  {item.buttons && (
+                    <ButtonLink
+                      buttons={item.buttons}
+                      spacing="vertical"
+                      direction="column"
+                      removePaddingLeft={true}
+                    />
+                  )}
+                </div>
+              </div>
             </div>
-            <div className="flex flex-col justify-center items-center">
-              {item.description && <BlockContent data={item.description} />}
-              {item.buttons && (
-                <ButtonLink
-                  buttons={item.buttons}
-                  spacing="vertical"
-                  direction="column"
-                  removePaddingLeft={true}
-                />
-              )}
-            </div>
-          </div>
-        </div>
-      );
-    });
+          );
+        })}
+      </>
+    ) : null; // Return null if featureItems is undefined
+  };
 
   const renderFeatureContent = () => {
     switch (feature_type) {
@@ -393,14 +389,14 @@ export default function Feature({ data }: FeatureProps) {
               {content && <BlockContent data={content} />}
             </div>
 
-            <div>
-              {image && (
+            {image && (
+              <div>
                 <ImageComponent
                   image={image}
                   widthOverride={1600}
                 />
-              )}
-            </div>
+              </div>
+            )}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {renderOffsetFeatureItems('small', 'offset', 'block')}
             </div>

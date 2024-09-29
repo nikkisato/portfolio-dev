@@ -1,7 +1,7 @@
 import BlockContent from '@/components/BlockContent';
 import ButtonLink from '@/components/ButtonLink';
 import ImageComponent from '@/components/ImageComponent';
-import { ButtonsItemProp, DescriptionContentItemProp, ProjectImageProp } from '@/sanity/lib/types';
+import { ButtonsItemProp, DescriptionContentItemProp, ImageProp } from '@/sanity/lib/types';
 
 interface ProjectItemProp {
   data: {
@@ -10,12 +10,12 @@ interface ProjectItemProp {
     project_type: string;
     description?: DescriptionContentItemProp[];
     buttons?: ButtonsItemProp[];
-    projectImage: ProjectImageProp[];
+    image?: ImageProp;
   };
 }
 
 export default function ProjectItem({ data }: ProjectItemProp) {
-  const { eyebrow, heading, description, buttons, projectImage, project_type } = data;
+  const { eyebrow, heading, description, buttons, image, project_type } = data;
 
   const renderItem = () => {
     switch (project_type) {
@@ -36,9 +36,11 @@ export default function ProjectItem({ data }: ProjectItemProp) {
               )}
             </div>
 
-            <div className="lg:order-1">
-              {projectImage && <ImageComponent image={projectImage} />}
-            </div>
+            {image && (
+              <div className="lg:order-1">
+                <ImageComponent image={image} />
+              </div>
+            )}
           </div>
         );
       case 'image_on_right_content_on_left':
@@ -50,7 +52,11 @@ export default function ProjectItem({ data }: ProjectItemProp) {
 
               {description && <BlockContent data={description} />}
             </div>
-            <div>{projectImage && <ImageComponent image={projectImage} />}</div>
+            {image && (
+              <div>
+                <ImageComponent image={image} />
+              </div>
+            )}
             {buttons && (
               <ButtonLink
                 buttons={buttons}

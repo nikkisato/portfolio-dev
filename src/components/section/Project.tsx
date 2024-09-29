@@ -1,7 +1,7 @@
 import ProjectItem from '@/components/ProjectItem';
 import {
   ButtonsItemProp,
-  ProjectImageProp,
+  ImageProp,
   DescriptionContentItemProp,
   ProjectItemsProp,
 } from '@/sanity/lib/types';
@@ -11,9 +11,9 @@ interface ProjectDataProp {
     title: string;
     eyebrow: string;
     description?: DescriptionContentItemProp[];
-    projectItems: ProjectItemsProp[];
+    projectItems?: ProjectItemsProp[];
     buttons?: ButtonsItemProp[];
-    projectImage: ProjectImageProp[];
+    image?: ImageProp;
   };
 }
 
@@ -22,14 +22,15 @@ export default function Project({ data }: ProjectDataProp) {
   return (
     <div className="flex flex-col justify-center items-center">
       {title && <h2 className="font-bold text-4xl">{title}</h2>}
-      {projectItems.map((item, index: number) => {
-        return (
-          <ProjectItem
-            key={index}
-            data={item}
-          />
-        );
-      })}
+      {projectItems &&
+        projectItems.map((item, index: number) => {
+          return (
+            <ProjectItem
+              key={index}
+              data={item}
+            />
+          );
+        })}
     </div>
   );
 }

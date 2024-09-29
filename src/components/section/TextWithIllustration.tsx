@@ -6,7 +6,7 @@ interface TextWithIllustrationProps {
     heading: string;
     eyebrow: string;
     content: string;
-    image: ImageProp[];
+    image: ImageProp;
     image_alignment: 'left' | 'right';
     text_alignment: 'left' | 'center' | 'right';
   };

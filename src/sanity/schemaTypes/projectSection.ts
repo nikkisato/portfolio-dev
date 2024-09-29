@@ -69,8 +69,8 @@ export const projectSection = defineType({
               description: 'Brief description of the Project',
             }),
             defineField({
-              name: 'projectImage',
-              title: 'Project Image',
+              name: 'image',
+              title: 'Image',
               type: 'image',
               description: 'Project image for the Project section',
             }),
