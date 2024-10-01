@@ -27,6 +27,7 @@ export default function getIconComponent(
   iconName: string | undefined,
   iconSize?: 'small' | 'large'
 ) {
+  console.log('iconName', iconName);
   switch (iconName) {
     case 'Facebook':
       return <FacebookIcon fontSize={iconSize} />;
@@ -70,13 +71,12 @@ export default function getIconComponent(
       return <PublicIcon fontSize={iconSize} />;
     case 'Check':
       return <CheckIcon fontSize={iconSize} />;
-    case 'Code':
+    case 'CodeIcon':
       return <CodeIcon fontSize={iconSize} />;
-    case 'Accessibility':
+    case 'AccessibilityNewIcon':
       return <AccessibilityNewIcon fontSize={iconSize} />;
-    case 'Camera':
+    case 'CameraIcon':
       return <CameraAltIcon fontSize={iconSize} />;
-
     default:
       console.log('No matching icon for:', iconName);
       return null;

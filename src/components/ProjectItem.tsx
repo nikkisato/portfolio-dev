@@ -30,8 +30,10 @@ export default function ProjectItem({ data }: ProjectItemProp) {
               {buttons && (
                 <ButtonLink
                   buttons={buttons}
-                  direction="row"
-                  spacing="horizontal"
+                  mobileDirection="row"
+                  mobileSpacing="horizontal"
+                  desktopDirection="row"
+                  desktopSpacing="horizontal"
                 />
               )}
             </div>
@@ -54,8 +56,10 @@ export default function ProjectItem({ data }: ProjectItemProp) {
               {buttons && (
                 <ButtonLink
                   buttons={buttons}
-                  direction="row"
-                  spacing="horizontal"
+                  mobileDirection="row"
+                  mobileSpacing="horizontal"
+                  desktopDirection="row"
+                  desktopSpacing="horizontal"
                 />
               )}
             </div>

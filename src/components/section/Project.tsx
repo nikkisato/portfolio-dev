@@ -23,7 +23,7 @@ export default function Project({ data }: ProjectDataProp) {
   return (
     <div
       id={section_id}
-      className="flex flex-col justify-center items-center container mx-auto"
+      className="flex flex-col justify-center items-center container mx-auto p-4"
     >
       {title && <h2 className="font-bold text-4xl">{title}</h2>}
       {projectItems &&

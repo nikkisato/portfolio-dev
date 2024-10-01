@@ -17,8 +17,10 @@ export default async function Header() {
         <nav>
           <ButtonLink
             buttons={buttons}
-            spacing="horizontal"
-            direction="row"
+            mobileDirection="row"
+            mobileSpacing="horizontal"
+            desktopDirection="row"
+            desktopSpacing="horizontal"
           />
         </nav>
       </div>

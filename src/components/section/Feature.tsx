@@ -2,6 +2,7 @@ import ButtonLink from '@/components/ButtonLink';
 import BlockContent from '@/components/BlockContent';
 import ImageComponent from '@/components/ImageComponent';
 import getIconComponent from '@/components/getIconComponent';
+
 import { ButtonsItemProp, DescriptionContentItemProp, ImageProp } from '@/sanity/lib/types';
 interface FeatureProps {
   data: {
@@ -51,8 +52,10 @@ export default function Feature({ data }: FeatureProps) {
             {item.buttons && (
               <ButtonLink
                 buttons={item.buttons}
-                spacing="vertical"
-                direction="column"
+                mobileDirection="column"
+                mobileSpacing="vertical"
+                desktopDirection="column"
+                desktopSpacing="vertical"
                 removePaddingLeft={true}
               />
             )}
@@ -90,8 +93,10 @@ export default function Feature({ data }: FeatureProps) {
                       {item.buttons && (
                         <ButtonLink
                           buttons={item.buttons}
-                          spacing="vertical"
-                          direction="column"
+                          mobileDirection="column"
+                          mobileSpacing="vertical"
+                          desktopDirection="column"
+                          desktopSpacing="vertical"
                           removePaddingLeft={true}
                         />
                       )}
@@ -121,8 +126,10 @@ export default function Feature({ data }: FeatureProps) {
                       <ButtonLink
                         className="ml-11"
                         buttons={item.buttons}
-                        spacing="vertical"
-                        direction="column"
+                        mobileDirection="column"
+                        mobileSpacing="vertical"
+                        desktopDirection="column"
+                        desktopSpacing="vertical"
                         removePaddingLeft={true}
                       />
                     )}
@@ -150,8 +157,10 @@ export default function Feature({ data }: FeatureProps) {
                         <ButtonLink
                           className="ml-2"
                           buttons={item.buttons}
-                          spacing="vertical"
-                          direction="column"
+                          mobileDirection="column"
+                          mobileSpacing="vertical"
+                          desktopDirection="column"
+                          desktopSpacing="vertical"
                           removePaddingLeft={true}
                         />
                       )}
@@ -196,29 +205,27 @@ export default function Feature({ data }: FeatureProps) {
     ) : null; // Return null if featureItems is undefined
   };
 
-  const getRandomRotateClass = () => {
-    const rotateClasses = [
-      'rotate-0',
-      'rotate-1',
-      'rotate-2',
-      'rotate-3',
-      '-rotate-1',
-      '-rotate-2',
-      '-rotate-3',
-    ];
-    return rotateClasses[Math.floor(Math.random() * rotateClasses.length)];
-  };
+  // const getRandomRotateClass = () => {
+  //   const rotateClasses = [
+  //     'rotate-0',
+  //     'rotate-1',
+  //     'rotate-2',
+  //     'rotate-3',
+  //     '-rotate-1',
+  //     '-rotate-2',
+  //     '-rotate-3',
+  //   ];
+  //   return rotateClasses[Math.floor(Math.random() * rotateClasses.length)];
+  // };
 
   const renderFeatureCardItems = (iconSize: 'small' | 'large') => {
     return featureItems ? (
       <>
         {featureItems.map((item) => {
-          const randomRotateClass = getRandomRotateClass();
-
           return (
             <div
               key={item._key}
-              className={`flex flex-col border-2 border-black ${randomRotateClass}`}
+              className={`flex flex-col border-2 border-black`}
             >
               <div className="border-8 mt-4 border-white flex justify-center items-center">
                 {item.image && (
@@ -248,8 +255,10 @@ export default function Feature({ data }: FeatureProps) {
                   {item.buttons && (
                     <ButtonLink
                       buttons={item.buttons}
-                      spacing="vertical"
-                      direction="column"
+                      mobileDirection="column"
+                      mobileSpacing="vertical"
+                      desktopDirection="column"
+                      desktopSpacing="vertical"
                       removePaddingLeft={true}
                     />
                   )}
@@ -421,12 +430,14 @@ export default function Feature({ data }: FeatureProps) {
         return (
           <div className="flex flex-col justify-center items-center py-20">
             {/* Outside Feature List Items */}
-            <div className="flex flex-col text-center justify-center items-center space-y-2 md:space-y-5 py-16 max-w-3xl">
+            <div className="flex flex-col text-left lg:text-center justify-center items-center space-y-2 md:space-y-5 py-16 max-w-3xl">
               {eyebrow && <span>{eyebrow}</span>}
               {title && <h2 className="font-bold text-4xl">{title}</h2>}
               {content && <BlockContent data={content} />}
             </div>
-            <div className="grid grid-cols-3 gap-16">{renderFeatureCardItems('small')}</div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+              {renderFeatureCardItems('small')}
+            </div>
           </div>
         );
       default:

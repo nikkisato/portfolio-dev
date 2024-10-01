@@ -17,11 +17,11 @@ export default function CallToAction({ data }: CallToActionProps) {
   return (
     <div
       id={section_id}
-      className="flex flex-col justify-center items-center space-y-10 py-20"
+      className="flex flex-col justify-center items-center space-y-10 py-20 p-4"
     >
       {heading && <h2 className="font-bold text-4xl">{heading}</h2>}
       {content && (
-        <div className="max-w-2xl text-center">
+        <div className="max-w-2xl text-left lg:text-center">
           <BlockContent data={content} />
         </div>
       )}
@@ -29,8 +29,10 @@ export default function CallToAction({ data }: CallToActionProps) {
         <div className="flex items-center">
           <ButtonLink
             buttons={buttons}
-            spacing="horizontal"
-            direction="row"
+            mobileDirection="column"
+            mobileSpacing="vertical"
+            desktopDirection="row"
+            desktopSpacing="horizontal"
             paddingButton={true}
           />
         </div>

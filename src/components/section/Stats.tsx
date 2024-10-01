@@ -40,7 +40,7 @@ export default function StatsSection({ data }: StatsProps) {
       </div>
 
       {statItem && (
-        <div className="grid grid-cols-2 ">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-y-10	md:gap-y-0">
           {statItem.map((item) => {
             const chips = extractChips(item.chips);
 
