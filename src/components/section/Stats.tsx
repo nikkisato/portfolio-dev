@@ -33,7 +33,7 @@ export default function StatsSection({ data }: StatsProps) {
   console.log('stats', statItem);
   return (
     <div className="container mx-auto py-10">
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-col justify-center items-center py-10">
         {title && <h2 className="font-bold text-4xl">{title}</h2>}
         {eyebrow && <span>{eyebrow}</span>}
         {content && <BlockContent data={content} />}

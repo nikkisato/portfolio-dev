@@ -21,7 +21,7 @@ export default function CallToAction({ data }: CallToActionProps) {
     >
       {heading && <h2 className="font-bold text-4xl">{heading}</h2>}
       {content && (
-        <div>
+        <div className="max-w-2xl text-center">
           <BlockContent data={content} />
         </div>
       )}

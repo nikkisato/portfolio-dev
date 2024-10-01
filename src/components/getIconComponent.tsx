@@ -19,6 +19,9 @@ import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import PublicIcon from '@mui/icons-material/Public';
 import CheckIcon from '@mui/icons-material/Check';
+import CodeIcon from '@mui/icons-material/Code';
+import AccessibilityNewIcon from '@mui/icons-material/AccessibilityNew';
+import CameraAltIcon from '@mui/icons-material/CameraAlt';
 
 export default function getIconComponent(
   iconName: string | undefined,
@@ -67,6 +70,13 @@ export default function getIconComponent(
       return <PublicIcon fontSize={iconSize} />;
     case 'Check':
       return <CheckIcon fontSize={iconSize} />;
+    case 'Code':
+      return <CodeIcon fontSize={iconSize} />;
+    case 'Accessibility':
+      return <AccessibilityNewIcon fontSize={iconSize} />;
+    case 'Camera':
+      return <CameraAltIcon fontSize={iconSize} />;
+
     default:
       console.log('No matching icon for:', iconName);
       return null;
