@@ -27,7 +27,6 @@ export default function getIconComponent(
   iconName: string | undefined,
   iconSize?: 'small' | 'large'
 ) {
-  console.log('iconName', iconName);
   switch (iconName) {
     case 'Facebook':
       return <FacebookIcon fontSize={iconSize} />;

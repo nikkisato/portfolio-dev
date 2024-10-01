@@ -30,7 +30,6 @@ function extractChips(chips?: string): string[] {
 export default function StatsSection({ data }: StatsProps) {
   const { eyebrow, content, title, statItem } = data;
 
-  console.log('stats', statItem);
   return (
     <div className="container mx-auto py-10">
       <div className="flex flex-col justify-center items-center py-10">
@@ -44,7 +43,6 @@ export default function StatsSection({ data }: StatsProps) {
           {statItem.map((item) => {
             const chips = extractChips(item.chips);
 
-            console.log('chips', chips);
             return (
               <div key={item._key}>
                 <h3 className="text-center font-bold text-2xl">{item.heading}</h3>
