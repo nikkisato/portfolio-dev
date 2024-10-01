@@ -21,8 +21,10 @@ export default async function Footer() {
               {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
-                  spacing="horizontal"
-                  direction="row"
+                  mobileDirection="row"
+                  mobileSpacing="horizontal"
+                  desktopDirection="row"
+                  desktopSpacing="horizontal"
                 />
               )}
             </div>
@@ -31,9 +33,10 @@ export default async function Footer() {
               {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
-                  spacing="horizontal"
-                  direction="row"
-                  paddingButton={true}
+                  mobileDirection="row"
+                  mobileSpacing="horizontal"
+                  desktopDirection="row"
+                  desktopSpacing="horizontal"
                 />
               )}
             </div>
@@ -46,8 +49,10 @@ export default async function Footer() {
             {columns[0] && columns[0].buttons && (
               <ButtonLink
                 buttons={columns[0].buttons}
-                spacing="horizontal"
-                direction="row"
+                mobileDirection="row"
+                mobileSpacing="horizontal"
+                desktopDirection="row"
+                desktopSpacing="horizontal"
               />
             )}
             <Copyright />
@@ -64,8 +69,10 @@ export default async function Footer() {
               {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -78,8 +85,10 @@ export default async function Footer() {
               {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -92,8 +101,10 @@ export default async function Footer() {
               {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -106,8 +117,10 @@ export default async function Footer() {
               {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -124,8 +137,10 @@ export default async function Footer() {
               {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="row"
+                  mobileSpacing="horizontal"
+                  desktopDirection="row"
+                  desktopSpacing="horizontal"
                 />
               )}
             </div>
@@ -138,8 +153,10 @@ export default async function Footer() {
               {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -152,8 +169,10 @@ export default async function Footer() {
               {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -166,8 +185,10 @@ export default async function Footer() {
               {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -189,8 +210,10 @@ export default async function Footer() {
               {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -203,8 +226,10 @@ export default async function Footer() {
               {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -217,8 +242,10 @@ export default async function Footer() {
               {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -231,8 +258,10 @@ export default async function Footer() {
               {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -253,8 +282,10 @@ export default async function Footer() {
               {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -267,8 +298,10 @@ export default async function Footer() {
               {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -281,8 +314,10 @@ export default async function Footer() {
               {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -295,8 +330,10 @@ export default async function Footer() {
               {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -317,8 +354,10 @@ export default async function Footer() {
               {columns[0] && columns[0].buttons && (
                 <ButtonLink
                   buttons={columns[0].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -331,8 +370,10 @@ export default async function Footer() {
               {columns[1] && columns[1].buttons && (
                 <ButtonLink
                   buttons={columns[1].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -345,8 +386,10 @@ export default async function Footer() {
               {columns[2] && columns[2].buttons && (
                 <ButtonLink
                   buttons={columns[2].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>
@@ -359,8 +402,10 @@ export default async function Footer() {
               {columns[3] && columns[3].buttons && (
                 <ButtonLink
                   buttons={columns[3].buttons}
-                  spacing="vertical"
-                  direction="column"
+                  mobileDirection="column"
+                  mobileSpacing="vertical"
+                  desktopDirection="column"
+                  desktopSpacing="vertical"
                 />
               )}
             </div>

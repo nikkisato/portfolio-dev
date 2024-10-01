@@ -81,8 +81,10 @@ export default function MissionStatement({ missionStatement }: MissionStatementP
       <div>
         <ButtonLink
           buttons={buttons}
-          spacing="horizontal"
-          direction="row"
+          mobileDirection="row"
+          mobileSpacing="horizontal"
+          desktopDirection="row"
+          desktopSpacing="horizontal"
         />
       </div>
     </div>

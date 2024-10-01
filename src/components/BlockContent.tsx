@@ -1,3 +1,5 @@
+import React from 'react';
+
 interface BlockContentProps {
   className?: string;
 
@@ -15,74 +17,63 @@ export default function BlockContent({ data, className }: BlockContentProps) {
     <div className={className}>
       {data &&
         data.map((desc, index) => {
-          const childText = desc.children[0].text;
-          const childMark = desc.children[0].marks?.[0];
+          const renderChildren = (children: { text: string; marks?: string[] | undefined }[]) => {
+            return children.map((child, childIndex) => {
+              let formattedText: React.ReactNode = child.text;
 
-          // Handling text formatting (strong, emphasis)
-          if (childMark) {
-            switch (childMark) {
-              case 'strong':
-                return <strong key={index}>{childText}</strong>;
-              case 'em':
-                return <em key={index}>{childText}</em>;
-              case 'underline':
-                return <u key={index}>{childText}</u>;
-              case 'strike-through':
-                return <s key={index}>{childText}</s>;
-              default:
-                return <span key={index}>{childText}</span>;
-            }
-          }
+              if (child.marks) {
+                child.marks.forEach((mark) => {
+                  switch (mark) {
+                    case 'strong':
+                      formattedText = <strong key={mark}>{formattedText}</strong>;
+                      break;
+                    case 'em':
+                      formattedText = <em key={mark}>{formattedText}</em>;
+                      break;
+                    case 'underline':
+                      formattedText = <u key={mark}>{formattedText}</u>;
+                      break;
+                    case 'strike-through':
+                      formattedText = <s key={mark}>{formattedText}</s>;
+                      break;
+                    default:
+                      formattedText = <span key={mark}>{formattedText}</span>;
+                  }
+                });
+              }
 
-          // Handling list items
+              return <span key={childIndex}>{formattedText}</span>;
+            });
+          };
+
           if (desc.listItem === 'bullet') {
             return (
               <ul key={index}>
                 {desc.children.map((child, idx) => (
-                  <li key={idx}>{child.text}</li>
+                  <li key={idx}>{renderChildren([child])}</li>
                 ))}
               </ul>
             );
           }
 
-          // Handling description list (dl, dt, dd)
-          if (desc._type === 'descriptionList') {
-            console.log('HELLO');
-            return (
-              <dl key={index}>
-                {desc.children.map((child, idx) => (
-                  <>
-                    <dt key={`${desc._key}-dt-${idx}`}>{child.text}</dt>
-                    {child.text && (
-                      <dd key={`${desc._key}-dd-${idx}`}>
-                        {/* Replace with logic to render dd content or use another data field */}
-                        {`Description of ${child.text}`}
-                      </dd>
-                    )}
-                  </>
-                ))}
-              </dl>
-            );
-          }
+          const content = renderChildren(desc.children);
 
-          // Handling different styles (headings, paragraphs)
           switch (desc.style) {
             case 'h1':
-              return <h1 key={index}>{childText}</h1>;
+              return <h1 key={index}>{content}</h1>;
             case 'h2':
-              return <h2 key={index}>{childText}</h2>;
+              return <h2 key={index}>{content}</h2>;
             case 'h3':
-              return <h3 key={index}>{childText}</h3>;
+              return <h3 key={index}>{content}</h3>;
             case 'h4':
-              return <h4 key={index}>{childText}</h4>;
+              return <h4 key={index}>{content}</h4>;
             case 'h5':
-              return <h5 key={index}>{childText}</h5>;
+              return <h5 key={index}>{content}</h5>;
             case 'h6':
-              return <h6 key={index}>{childText}</h6>;
+              return <h6 key={index}>{content}</h6>;
             case 'normal':
-              return <p key={index}>{childText}</p>;
             default:
-              return <p key={index}>{childText}</p>;
+              return <p key={index}>{content}</p>;
           }
         })}
     </div>

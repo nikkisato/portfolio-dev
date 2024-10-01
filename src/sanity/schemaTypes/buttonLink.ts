@@ -30,6 +30,7 @@ export const buttonLink = defineType({
           { title: 'Instagram', value: 'InstagramCircle' },
           { title: 'Email', value: 'Email' },
           { title: 'Linkedin', value: 'Linkedin' },
+          { title: 'Internet', value: 'Internet' },
         ],
       },
     }),

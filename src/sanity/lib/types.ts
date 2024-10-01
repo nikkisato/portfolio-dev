@@ -3,11 +3,6 @@ export interface BaseSectionProp {
   _id: string;
 }
 
-export interface BaseDataSectionProp {
-  _key: string;
-  _id: string;
-}
-
 export interface ButtonsItemProp extends BaseSectionProp {
   text: string;
   url: string;
@@ -118,9 +113,27 @@ export interface FeatureSection extends BaseSectionProp {
   featureItems?: FeatureItemProp[];
 }
 
+export interface StatItem {
+  heading: string;
+  chips?: string;
+  buttons?: ButtonsItemProp[];
+  _keys?: string;
+}
+
+export interface StatsSection extends BaseSectionProp {
+  title?: string;
+  _type: 'stats';
+  content?: DescriptionContentItemProp[];
+  section_id?: string;
+  eyebrow?: string;
+  statItem?: StatItem[];
+  stat_type?: string;
+}
+
 export type Section =
   | HeroSection
   | ProjectSection
+  | StatsSection
   | CallToActionSection
   | textWithIllustrationSection
   | FeatureSection;

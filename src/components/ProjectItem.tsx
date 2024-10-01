@@ -30,8 +30,10 @@ export default function ProjectItem({ data }: ProjectItemProp) {
               {buttons && (
                 <ButtonLink
                   buttons={buttons}
-                  direction="row"
-                  spacing="horizontal"
+                  mobileDirection="row"
+                  mobileSpacing="horizontal"
+                  desktopDirection="row"
+                  desktopSpacing="horizontal"
                 />
               )}
             </div>
@@ -46,23 +48,25 @@ export default function ProjectItem({ data }: ProjectItemProp) {
       case 'image_on_right_content_on_left':
         return (
           <div className="grid lg:grid-cols-2 gap-16 py-20">
-            <div className="flex flex-col space-y-2 md:space-y-5 max-w-xl">
+            <div className="flex flex-col space-y-4 md:space-y-5 max-w-xl">
               {eyebrow && <span>{eyebrow}</span>}
               {heading && <h3 className="font-bold text-4xl">{heading}</h3>}
 
               {description && <BlockContent data={description} />}
+              {buttons && (
+                <ButtonLink
+                  buttons={buttons}
+                  mobileDirection="row"
+                  mobileSpacing="horizontal"
+                  desktopDirection="row"
+                  desktopSpacing="horizontal"
+                />
+              )}
             </div>
             {image && (
               <div>
                 <ImageComponent image={image} />
               </div>
-            )}
-            {buttons && (
-              <ButtonLink
-                buttons={buttons}
-                direction="row"
-                spacing="horizontal"
-              />
             )}
           </div>
         );

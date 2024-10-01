@@ -4,8 +4,10 @@ import { ButtonsItemProp } from '@/sanity/lib/types';
 
 interface ButtonLinkProps {
   buttons: ButtonsItemProp[];
-  spacing: 'horizontal' | 'vertical';
-  direction: 'row' | 'column';
+  mobileSpacing: 'horizontal' | 'vertical';
+  desktopSpacing: 'horizontal' | 'vertical';
+  desktopDirection: 'row' | 'column';
+  mobileDirection: 'row' | 'column';
   removePaddingLeft?: boolean;
   paddingButton?: boolean;
   className?: string;
@@ -13,8 +15,10 @@ interface ButtonLinkProps {
 
 export default function ButtonLink({
   buttons,
-  direction,
-  spacing,
+  mobileDirection = 'column',
+  desktopDirection = 'row',
+  mobileSpacing = 'vertical',
+  desktopSpacing = 'horizontal',
   removePaddingLeft = false,
   paddingButton = true,
   className,
@@ -51,10 +55,14 @@ export default function ButtonLink({
       className={classNames(
         className,
         'flex',
-        { 'flex-row': direction === 'row' },
-        { 'flex-col': direction === 'column' },
-        { 'space-x-10': spacing === 'horizontal' },
-        { 'space-y-10': spacing === 'vertical' }
+        { 'flex-row': mobileDirection === 'row' },
+        { 'flex-col': mobileDirection === 'column' },
+        { 'lg:flex-row': desktopDirection === 'row' },
+        { 'lg:flex-col': desktopDirection === 'column' },
+        { 'space-x-5': mobileSpacing === 'horizontal' },
+        { 'space-y-2': mobileSpacing === 'vertical' },
+        { 'space-y-0 lg:space-x-10': desktopSpacing === 'horizontal' },
+        { 'space-x-0 lg:space-y-10': desktopSpacing === 'vertical' }
       )}
     >
       {buttons &&
