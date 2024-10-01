@@ -103,6 +103,7 @@ export const featureSection = defineType({
                   { title: 'PlayCircle', value: 'PlayCircleIcon' },
                   { title: 'Person', value: 'PersonIcon' },
                   { title: 'PauseCircle', value: 'PauseCircleIcon' },
+
                   // Add more Material UI icons here
                 ],
               },

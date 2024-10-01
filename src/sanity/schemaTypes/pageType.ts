@@ -48,6 +48,11 @@ export const pageType = defineType({
           type: 'video',
         }),
         defineArrayMember({
+          name: 'stats',
+          title: 'Stats Section',
+          type: 'statsSection',
+        }),
+        defineArrayMember({
           name: 'feature',
           title: 'Feature Section',
           type: 'featureSection',

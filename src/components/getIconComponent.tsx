@@ -17,6 +17,8 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import BuildIcon from '@mui/icons-material/Build';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import PublicIcon from '@mui/icons-material/Public';
+import CheckIcon from '@mui/icons-material/Check';
 
 export default function getIconComponent(
   iconName: string | undefined,
@@ -61,6 +63,10 @@ export default function getIconComponent(
       return <PersonIcon fontSize={iconSize} />;
     case 'PauseCircle':
       return <PauseCircleIcon fontSize={iconSize} />;
+    case 'Internet':
+      return <PublicIcon fontSize={iconSize} />;
+    case 'Check':
+      return <CheckIcon fontSize={iconSize} />;
     default:
       console.log('No matching icon for:', iconName);
       return null;

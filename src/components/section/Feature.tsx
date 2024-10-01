@@ -421,7 +421,7 @@ export default function Feature({ data }: FeatureProps) {
         return (
           <div className="flex flex-col justify-center items-center py-20">
             {/* Outside Feature List Items */}
-            <div className="flex flex-col justify-center items-center space-y-2 md:space-y-5 py-16 max-w-xl">
+            <div className="flex flex-col text-center justify-center items-center space-y-2 md:space-y-5 py-16 max-w-3xl">
               {eyebrow && <span>{eyebrow}</span>}
               {title && <h2 className="font-bold text-4xl">{title}</h2>}
               {content && <BlockContent data={content} />}

@@ -5,6 +5,7 @@ import CallToAction from '@/components/section/CallToAction';
 import TextWithIllustration from '@/components/section/TextWithIllustration';
 import Project from '@/components/section/Project';
 import Feature from '@/components/section/Feature';
+import Stats from '@/components/section/Stats';
 
 import { Section } from '@/sanity/lib/types';
 
@@ -39,6 +40,14 @@ export default async function PageBuilder() {
             case 'callToAction':
               return (
                 <CallToAction
+                  key={key}
+                  data={section}
+                />
+              );
+              break;
+            case 'stats':
+              return (
+                <Stats
                   key={key}
                   data={section}
                 />

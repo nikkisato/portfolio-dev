@@ -16,6 +16,7 @@ import { featureSection } from './featureSection';
 import { newsletterType } from './newsletter';
 import { missionStatementType } from './missionStatement';
 import { siteInfoType } from './siteInfo';
+import { statsSection } from './stats';
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -35,5 +36,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     newsletterType,
     missionStatementType,
     siteInfoType,
+    statsSection,
   ],
 };
