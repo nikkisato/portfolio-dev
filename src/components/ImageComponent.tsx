@@ -9,9 +9,8 @@ export default function ImageComponent({
 }: ImageComponentProps) {
   const { asset } = image;
 
-  // Handle case where asset is undefined
   if (!asset) {
-    return <div>No image available</div>; // Or render a placeholder image
+    return <div>No image available</div>;
   }
 
   const width = widthOverride || asset.width || 800;
@@ -20,9 +19,9 @@ export default function ImageComponent({
   return (
     <Image
       className="h-full"
-      src={urlFor(asset).url()} // This is safe now
-      alt={image.alt || 'Sanity Image'} // Use image.alt if provided
-      style={{ objectFit: 'cover' }}
+      src={urlFor(asset).url()}
+      alt={image.alt || 'Sanity Image'}
+      style={{ objectFit: 'contain' }}
       width={width}
       height={height}
     />
