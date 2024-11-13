@@ -29,11 +29,10 @@ export default function CallToAction({ data }: CallToActionProps) {
         <div className="flex items-center">
           <ButtonLink
             buttons={buttons}
-            mobileDirection="column"
-            mobileSpacing="vertical"
+            mobileDirection="row"
+            mobileSpacing="horizontal"
             desktopDirection="row"
             desktopSpacing="horizontal"
-            paddingButton={true}
           />
         </div>
       )}
